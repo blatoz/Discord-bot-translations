@@ -1,0 +1,17 @@
+{
+    "rolePriority": {
+        "largest": "A legmagasabb szorzóval rendelkező szerep",
+        "smallest": "A legalacsonyabb szorzóval rendelkező szerep",
+        "highest": "Legmagasabb rang",
+        "add": "Szorzók összegezve, mindegyik n-1",
+        "combine": "Szorzók kombinálva"
+    },
+
+    "channelStacking": {
+        "multiply": "Szorzók kombinálva",
+        "add": "Szorzó összegezve, mindegyik n-1",
+        "largest": "A legnagyobb szerep és csatorna között",
+        "channel": "Csatorna szorzója",
+        "role": "Rang szorzó prioritása"
+    }
+}

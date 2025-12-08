@@ -1,0 +1,45 @@
+{
+
+    "home": [
+        { "groupName": "General settings" },
+        { "emoji": "✨", "name": "Általános", "folder": "general" },
+        { "emoji": "🎁", "name": "Szintezés", "folder": "level" },
+        { "emoji": "📊", "name": "Rang és Toplista", "folder": "rank" }
+    ],
+
+    "general": [
+        { "emoji": "⬅️", "name": "Vissza", "folder": "home", "groupName": "General settings" },
+        { "db": "enabled", "name": "XP engedélyezése", "desc": "Engedi a tagoknak hogy XP-t szerezenek.", "tip": "A letiltás megakadályozza, hogy bárki XP-t szerezzen, de nem állítja vissza és nem távolítja el a meglévő XP-t." },
+        { "db": "gain.min", "name": "Min XP", "desc": "Az üzenetenként szerzett XP minimuma", "tip": "Minden üzenet véletlenszerű mennyiségű XP-t ad, ez változtatja az alsó határt" },
+        { "db": "gain.max", "name": "Max XP", "desc": "Az üzenetenként szerzett XP maximuma", "tip": "Minden üzenet véletlenszerű mennyiségű XP-t ad, ez változtatja a felső határt" },
+        { "db": "gain.time", "name": "XP Cooldown", "desc": "A tagoknak ennyi másodpercet kell várniuk, mielőtt újra szerezhetnek XP-t", "tip": "A cooldown idő alatt küldött üzenetek nem adnak XP-t", "str": "# másodperc" },
+        { "db": "maxLevel", "name": "Szint korlát", "desc": "A legmagasabb szint, amit a tagok elérhetnek", "tip": "A tagok továbbra is szerezhetnek XP-t ezen a szint felett, hacsak nem jutalmazol egy szerepkört 0x szorzóval" }
+    ],
+
+    "level": [
+        { "emoji": "⬅️", "name": "Vissza", "folder": "home", "groupName": "Levelling settings" },
+        { "db": "levelUp.enabled", "name": "Szint növelési üzenet engedélyezése", "desc": "Küld egy üzenetet vagy DM-t, amikor egy tag növeli a szintjét" },
+        { "db": "levelUp.multiple", "name": "Többszörös szintlépés", "desc": "Csak akkor küldi el a szintemelkedés üzenetet, ha eléri ennek a számnak a többszörösét.", "tip": "Az 5-ös többszöröse az 5., 10., 15., 20., 25. szinten küldi...", "str": "Every # level(s)" },
+        { "db": "levelUp.multipleUntil", "name": "Több szintű korlát", "desc": "Ezt a szintet elérve a szintlépés-szorzó már nem kerül alkalmazásra, és minden elért szintre vonatkozóan üzenet jelenik meg.", "tip": "0-ra állítva letiltásra kerül", "str": "Level #", "zeroText": "Disabled" },
+        { "space": true },
+        { "db": "rewardSyncing.noManual", "name": "Manuális szinkor", "invert": true, "desc": "Lehetővé teszi a tagok számára, hogy a /sync paranccsal bármikor manuálisan szinkronizálják szerepeiket." },
+        { "db": "rewardSyncing.noWarning", "name": "Szinkronizálási figyelmeztetés", "invert": true, "desc": "Figyelmeztető üzenet megjelenítése a /rank parancsban, ha egy tag szerepei nem szinkronizálódnak megfelelően" }
+    ],
+
+    "rank": [
+        { "emoji": "⬅️", "name": "Vissza", "folder": "home", "groupName": "Rank and Leaderboard settings" },
+        { "db": "rankCard.disabled", "name": "/rank engedélyezése", "invert": true, "desc": "Engedélyezi a /rank kártyákat", "tip": "Ennek letiltásával a /calculate mappában található legtöbb információ is el lesz rejtve." },
+        { "db": "rankCard.ephemeral", "name": "/rank rejtett üzenet engedélyezése", "desc": "A parancsok/rangüzenetek ideiglenesek legyenek, vagyis csak az a tag láthassa őket, aki a parancsot beírta." },
+        { "db": "rankCard.hideCooldown", "name": "Rejtett cooldown", "desc": "Elrejti azt az időtartamot, amíg újra XP-t lehet szerezni." },
+        { "db": "hideMultipliers", "name": "Szorzó elrejtése", "desc": "Elrejti, mely szerepek rendelkeznek szorzóval (kivéve a 0x-et)" },
+        { "db": "rankCard.relativeLevel", "name": "Relatív XP megjelenítése", "desc": "Megváltoztatja a /rank 'következő szint' szekcióját, hogy 0-tól kezdődjön és csak az adott szinthez tartozó XP-t tartalmazza", "tip": "pl. Ha a 10. szinthez 2000 XP kell, a 11. szinthez pedig 3000, akkor egy 2500 XP-vel rendelkező tag esetén \"500/1000 XP a 11. szintig\" jelenik meg" },
+        { "space": true },
+        { "db": "leaderboard.disabled", "name": "Toplista engedélyezése", "invert": true, "desc": "Engedélyezi a szerver XP toplistáját" },
+        { "db": "leaderboard.ephemeralTop", "name": "Elrejtés /top üzenetek", "desc": "A /top üzenetek ideiglenesek legyenek, vagyis csak az a tag láthassa őket, aki a parancsot beírta." },
+        { "db": "leaderboard.private", "name": "Privát ranglista", "desc": "Korlátozza az online ranglistát, így csak a szerver tagjai férhetnek hozzá (bejelentkezés szükséges)." },
+        { "db": "leaderboard.hideRoles", "name": "Jutalom szerepek elrejtése", "desc": "Elrejti a jutalom szerepek listáját az online ranglistán" },
+        { "db": "leaderboard.ephemeral", "name": "Elrejtés /top üzenetek", "desc": "A /top üzenetek ideiglenesek legyenek, vagyis csak az a tag láthassa őket, aki a parancsot beírta." },
+        { "db": "leaderboard.minLevel", "name": "Minimum toplista szint", "desc": "A ranglistát úgy korlátozza, hogy csak az e szint feletti tagokat mutassa meg.", "tip": "0-ra állítva letiltásra kerül", "zeroText": "Nincsen" },
+        { "db": "leaderboard.maxEntries", "name": "Max toplista bejegyzések", "desc": "Csak a ranglistán szereplő legjobb X tagot jeleníti meg.", "tip": "Állítsa 0-ra, hogy mindenkinek megjelenjen", "zeroText": "Korlátlan" }
+    ]
+}

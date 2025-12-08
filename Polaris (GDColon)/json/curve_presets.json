@@ -1,0 +1,106 @@
+{
+    "presets": [
+        {
+            "name": "Polaris (Alapértelmezett)",
+            "desc": "Az alapértelmezett és ajánlott görbe. Megfelelően kiegyensúlyozott.",
+            "curve": { "3": 1,      "2": 50,        "1": 100 },
+            "round": 100,
+            "bestRange": [50, 100]
+        },
+
+        {
+            "name": "RoboTop",
+            "desc": "A Polaris elődjének, a RoboTopnak a görbéje. Jól indul, de aztán abszurd módon megnehezül.",
+            "curve": { "3": 5,      "2": 100,        "1": 150 },
+            "round": 100,
+            "bestRange": [50, 100]
+        },
+
+        {
+            "name": "Nagylelkű",
+            "desc": "Túl nehéz szintet lépni? Ez a görbe egy kicsit barátságosabb.",
+            "curve": { "3": 0.5,      "2": 20,        "1": 50 },
+            "round": 50,
+            "bestRange": [50, 100]
+        },
+
+        {
+            "name": "Lineáris",
+            "desc": "Teljesen lineáris. Állítsd az XP-t üzenetenként 100-100-ra, hogy pontosan 100 üzenetenként lépj szintet.",
+            "curve": { "3": 0,      "2": 0,     "1": 10000 },
+            "round": 1,
+            "bestRange": [100, 100]
+        },
+
+        {
+            "name": "Exponenciális",
+            "desc": "Nem túl könnyű, nem túl nehéz. És nagyon simán skálázódik.",
+            "curve": { "3": 0,      "2": 250,     "1": 0 },
+            "round": 1,
+            "bestRange": [50, 100]
+        },
+
+        {
+            "name": "Minimalista",
+            "desc": "1-10 XP üzenetenként. Miért ne?.",
+            "curve": { "3": 1,      "2": 2,     "1": 3 },
+            "round": 10,
+            "bestRange": [1, 10]
+        },
+
+        {
+            "name": "Ultra Minimalista",
+            "desc": "1 XP üzenetenként, szintlépés minden 100 üzenet után. Alternatívaként ajánlom a 12 órás cooldown-t, ahol minden 10 üzenet után lépsz szintet!",
+            "curve": { "3": 0,      "2": 0,     "1": 100 },
+            "round": 1,
+            "bestRange": [1, 1]
+        },
+        
+        {
+            "name": "Minecraft",
+            "desc": "A Minecraft XP görbéje a szintedtől függően kissé változik, de ez a 0-15-ös szint közötti görbe. Elég közel van. Üzenetenként 3-11 XP-t ajánlok, ami egy Bottle o' Enchanting által biztosított mennyiség.",
+            "curve": { "3": 0,      "2": 1,     "1": 6 },
+            "round": 1,
+            "bestRange": [3, 11]
+        },
+
+        {
+            "name": "Arcane",
+            "desc": "Milyen titokzatos görbe, ami biztosan nem egy másik bottól származik!",
+            "curve": { "3": 0,      "2": 50,      "1": 25 },
+            "round": 5,
+            "bestRange": [15, 40]
+        },
+
+        {
+            "name": "Biztosan nem Mee6",
+            "desc": "Biztosíthatom önöket, hogy ez a furcsa, specifikus görbe nem abból a botból származik, amelyet az emberek nem szeretnek. Emellett, amennyire tudom, nem lehet tulajdonolni egy köbfüggvényt.",
+            "curve": { "3": 1.6666666667,      "2": 22.5,      "1": 75.8333333333 },
+            "round": 5,
+            "bestRange": [15, 25]
+        }
+    ],
+
+    "difficultyRatings": {
+        "0": "Lineráris",
+        "1": "Alapvetően lineáris",
+        "25": "Szinte nincs méretezés",
+        "50": "Extrémen nagylelkű",
+        "100": "Nagyon nagylelkű",
+        "225": "Nagylelkű",
+        "350": "Kissé nagylelkű",
+        "500": "Normális",
+        "1000": "Kicsit csípős",
+        "1500": "Közepesen csípős",
+        "2000": "Csípős",
+        "2500": "Nagyon csípős",
+        "3250": "Extrémen csípős",
+        "4000": "Veszélyesen csípős",
+        "5000": "Őrülten csípős",
+        "6500": "Brutális",
+        "10000": "Extrém brutális",
+        "20000": "Mi a franc",
+        "35000": "Eszednél vagy",
+        "50000": "AAAAAAAAAAAAAAAAAAAAAAA"
+    }
+}
