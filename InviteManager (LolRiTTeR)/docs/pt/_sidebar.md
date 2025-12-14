@@ -1,0 +1,43 @@
+- Getting Started
+
+  - [Quick Start](/pt/getting-started/quick-start.md)
+  - [FAQs](/pt/getting-started/faq.md)
+  - [Our Bots](/pt/getting-started/our-bots.md)
+  - [Alpha Bot](/pt/getting-started/alpha.md)
+  - [Pro Bot](/pt/getting-started/pro.md)
+
+- Reference
+
+  - [Commands](/pt/reference/commands.md)
+  - [Configs / Settings](/pt/reference/settings.md)
+
+- Premium
+
+  - [Features](/pt/premium/features.md)
+
+- Modules
+
+  - Invite Management
+
+    - [Custom message](/pt/modules/invites/custom-messages.md)
+      - [Examples](/pt/modules/invites/examples.md)
+
+  - Moderation
+
+    - [Strikes](/pt/modules/moderation/strikes.md)
+    - [Punishments](/pt/modules/moderation/punishments.md)
+
+  - Music
+
+    - [Overview](/pt/modules/music/overview.md)
+
+- Other
+
+  - [Webpanel](/pt/other/webpanel.md)
+  - [Translations](/pt/other/translations.md)
+  - [Donating](/pt/other/donating.md)
+  - [Support](/pt/other/support.md)
+  - [Changelog](/pt/other/changelog.md)
+  - [Roadmap](/pt/other/roadmap.md)
+  - [Open Source](/pt/other/open-source.md)
+  - [Privacy Policy](/pt/other/privacypolicy.md)

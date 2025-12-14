@@ -1,0 +1,1366 @@
+{
+	"lang": "繁體中文",
+	"modules": {
+		"title": "模組",
+		"invites": {
+			"title": "邀請管理",
+			"description": "當我們的機器人加入您的伺服器時，它會追蹤您伺服器上的每一個邀請。 Discord 只會顯示您總共有多少邀請。機器人還會分析誰邀請了誰。此功能可以偵測到假邀請數量以及發覺誰試圖欺騙邀請系統。",
+			"examples": {
+				"title": "範例",
+				"headlines": {
+					"examples": "範例",
+					"normal": "一般式訊息",
+					"normalVanity": "一般式訊息（個性化網址）",
+					"embed": "嵌入式訊息",
+					"screenshot": "截圖",
+					"code": "代碼",
+					"joinMessage": "加入訊息",
+					"joinMessageVanity": "加入訊息（個性化網址）",
+					"joinEmbed": "嵌入式加入訊息",
+					"joinEmbedVanity": "嵌入式加入訊息（個性化網址）",
+					"leaveMessage": "離開訊息",
+					"leaveMessageVanity": "離開訊息（個性化網址）",
+					"leaveEmbed": "嵌入式離開訊息",
+					"leaveEmbedVanity": "嵌入式離開訊息（個性化網址）"
+				},
+				"content": {
+					"normalCode": "```text\n!config joinMessage {memberMention} **joined**; Invited by **{inviterName}** (**{numInvites}** invites)\n```\n\n```text\n!config leaveMessage {memberName} **left** after {joinedAt:duration} on this server; Invited by **{inviterName}**\n```",
+					"normalCodeVanity": "```text\n!config joinMessageVanity {memberMention} **joined** using the vanity invite code **{inviteCode}**\n```\n\n```text\n!config leaveMessageVanity {memberName} **left** after {joinedAt:duration} on this server\n```",
+					"joinMessageCode": "```text\n!config joinMessage { \"color\": \"#5cd65c\", \"author\": { \"name\": \"{memberName} joined!\", \"icon_url\": \"{memberImage}\" }, \"fields\": [ { \"name\": \"Account created\", \"value\": \"{memberCreated:timeAgo}\", \"inline\": true }, { \"name\": \"First joined\", \"value\": \"{firstJoin:date}\", \"inline\": true }, { \"name\": \"Number of joins\", \"value\": \"{numJoins}\", \"inline\": true }, { \"name\": \"Invited by\", \"value\": \"{inviterMention}\\n{numInvites} (regular: {numRegularInvites}, bonus: {numBonusInvites}, fake: {numFakeInvites}, leave: {numLeaveInvites})\" }, { \"name\": \"Invite Code\", \"value\": \"{inviteCode} in channel {channelMention}\" }, { \"name\": \"Total Member Count\", \"value\": \"{memberCount}\" } ] }\n```",
+					"joinMessageCodeVanity": "```text\n!config joinMessageVanity { \"color\": \"#5cd65c\", \"author\": { \"name\": \"{memberName} joined!\", \"icon_url\": \"{memberImage}\" }, \"fields\": [ { \"name\": \"Account created\", \"value\": \"{memberCreated:timeAgo}\", \"inline\": true }, { \"name\": \"First joined\", \"value\": \"{firstJoin:date}\", \"inline\": true }, { \"name\": \"Number of joins\", \"value\": \"{numJoins}\", \"inline\": true }, { \"name\": \"Vanity Invite Code\", \"value\": \"{inviteCode}\" }, { \"name\": \"Total Member Count\", \"value\": \"{memberCount}\" } ] }\n```",
+					"leaveMessageCode": "```text\n!config leaveMessage { \"color\": \"#d65c5c\", \"author\": { \"name\": \"{memberName} left!\", \"icon_url\": \"{memberImage}\" }, \"fields\": [ { \"name\": \"Time on server\", \"value\": \"{joinedAt:duration}\", \"inline\": true }, { \"name\": \"First joined\", \"value\": \"{firstJoin:date}\", \"inline\": true }, { \"name\": \"Number of joins\", \"value\": \"{numJoins}\", \"inline\": true }, { \"name\": \"Invited by\", \"value\": \"{inviterMention}\\n{numInvites} (regular: {numRegularInvites}, bonus: {numBonusInvites}, fake: {numFakeInvites}, leave: {numLeaveInvites})\" }, { \"name\": \"Invite Code\", \"value\": \"{inviteCode} in channel {channelMention}\" }, { \"name\": \"Total Member Count\", \"value\": \"{memberCount}\" } ] }\n```",
+					"leaveMessageCodeVanity": "```text\n!config leaveMessageVanity { \"color\": \"#d65c5c\", \"author\": { \"name\": \"{memberName} left!\", \"icon_url\": \"{memberImage}\" }, \"fields\": [ { \"name\": \"Time on server\", \"value\": \"{joinedAt:duration}\", \"inline\": true }, { \"name\": \"First joined\", \"value\": \"{firstJoin:date}\", \"inline\": true }, { \"name\": \"Number of joins\", \"value\": \"{numJoins}\", \"inline\": true }, { \"name\": \"Vanity Invite Code\", \"value\": \"{inviteCode}\" }, { \"name\": \"Total Member Count\", \"value\": \"{memberCount}\" } ] }\n```"
+				}
+			},
+			"overview": {
+				"title": "概述"
+			},
+			"customMessages": {
+				"title": "自訂訊息",
+				"description": "您可以運用多個參數自訂加入和離開訊息。",
+				"placeholders": {
+					"title": {
+						"small": "預留參數",
+						"large": "預留參數"
+					},
+					"jumpto": "跳至",
+					"yes": "是",
+					"no": "否",
+					"example": "範例",
+					"description": "描述",
+					"descriptions": {
+						"memberName": "加入成員的名稱",
+						"memberId": "加入成員的 ID",
+						"memberMention": "提及加入成員（該成員會被@）",
+						"memberFullName": "加入成員的完整名稱",
+						"memberImage": "加入成員的頭像連結",
+						"inviterName": "邀請成員的名稱",
+						"inviterId": "邀請成員的 ID",
+						"inviterMention": "提及邀請成員（該成員會被@）",
+						"inviterFullName": "邀請成員的完整名稱",
+						"inviterImage": "邀請成員的頭像連結",
+						"numInvites": "邀請成員的所有邀請數量",
+						"numRegularInvites": "邀請成員的普通邀請數量",
+						"numBonusInvites": "邀請成員的獎勵邀請數量（手動指派）",
+						"numFakeInvites": "邀請成員的假邀請數量",
+						"numLeaveInvites": "邀請成員的離開邀請數量",
+						"memberCount": "伺服器的所有成員數",
+						"numJoins": "成員加入伺服器的次數",
+						"channelName": "產生邀請連結的頻道名稱",
+						"channelMention": "提及產生邀請連結的頻道",
+						"inviteCode": "使用的邀請代碼",
+						"memberCreatedDate": "成員創立帳號的日期",
+						"memberCreatedDuration": "成員創立帳號的期間",
+						"memberCreatedTimeAgo": "成員創立帳號距今多久",
+						"firstJoinDate": "成員第一次加入伺服器的日期",
+						"firstJoinDuration": "成員第一次加入伺服器的期間",
+						"firstJoinTimeAgo": "成員第一次加入伺服器距今多久",
+						"previousJoinDate": "成員上一次加入伺服器的日期",
+						"previousJoinDuration": "成員上一次加入伺服器的期間",
+						"previousJoinTimeAgo": "成員上一次加入伺服器距今多久",
+						"joinedAtDate": "成員加入伺服器的日期",
+						"joinedAtDuration": "成員加入伺服器的期間",
+						"joinedAtTimeAgo": "成員加入伺服器距今多久"
+					}
+				},
+				"content": "您可以自訂加入或離開訊息如下：\n\n```\n!config joinMessage This is your custom join message! It will be posted every time someone joins your server.\n```\n\n或\n\n```\n!config leaveMessage This is your custom leave message! It will be posted every time someone leaves your server.\n```\n\n這樣的訊息顯然沒有意義。 您應該使用有關加入成員、邀請成員或伺服器的資訊對其進行個性化設定。 請參閱以下可用的預留參數列表。\n\n所以如果想要的訊息如下：\n\n`Welcome @Andy! You were invited by Valandur, who now has 3 invites! Have fun on our server!`\n\n可以透過用預留參數替換所有名稱和數字來輕鬆做到：\n\n`Welcome {memberMention}! You were invited by {inviterName}, who now has {numInvites} invites! Have fun on our server!`\n\n所以您可以使用 `!config joinMessage <message from above>` 來設定加入訊息。當有人加入時，機器人會自動替換預留參數。",
+				"premiumNote": "高級會員還可以使用嵌入式加入和離開訊息。 [詳細資訊](./examples.md)",
+				"endingParagraph": "請參閱 [範例網頁](./examples.md) 來了解您可以使用哪種訊息！"
+			}
+		},
+		"moderation": {
+			"title": "審核",
+			"description": "全新的審核系可以統協助您自動審核許多內容。請查看我們的 [記點]({{{ linkStrikes }}}) 和 [懲罰]({{{ linkPunishments }}}) 頁面來獲取詳細資訊。簡單來說，我們的機器人會給予「記點」當人們行為不端時，當他們達到一定數量時，便會受到懲罰。這些都可以由使用者自行設定。",
+			"punishments": {
+				"title": "懲罰",
+				"question": {
+					"first": "甚麼是懲罰？",
+					"second": "記點達到一定數量時，我可以怎麼懲處使用者？"
+				},
+				"answer": {
+					"first": "懲罰是類似 `停權` 、 `踢出` 或 `靜音` 之類的動作，可以在使用者違反規定時給予。 您可以使用指令直接懲罰使用者，也可以自訂讓使用者達到一定數量的記點後受到懲處。",
+					"second": "使用 `punishmentconfig` 指令可以設定每種懲罰各自對應到的記點次數。\n\n```text\n!punishmentconfig <punishmentType> <numberOfStrikesNeeded>\n```\n\n可用的懲罰如下：\n\n- 停權\n- 暫時停權\n- 踢出\n- 靜音\n- 警告\n\n所以如果您想要踢出記點達到 5 次的使用者，您可以執行以下指令：\n\n```text\n!punishmentconfig kick 5\n```\n\n如果您想要刪除一項 `punishmentconfig` ，請設定記點次數為 `0` ，如下所示：\n\n```text\n!punishmentconfig kick 0\n```\n\n直接使用指令可確認所有的懲罰設定：\n\n```text\n!punishmentconfig\n```"
+				}
+			},
+			"strikes": {
+				"title": "記點",
+				"question": {
+					"first": "甚麼是記點？",
+					"second": "甚麼是違規事項？"
+				},
+				"answer": {
+					"first": "使用者違反伺服器規定時會被記點。每次記點時，機器人會透過私訊發送通知，告知記點次數及原因。當使用者的記點達到一定次數時，將受到**懲罰**。",
+					"second": "您可以在您的伺服器選擇啟用或禁用違規事項。可自訂的違規事項如下：\n\n- [邀請連結](strikes.md#invites)\n- [一般連結](strikes.md#links)\n- [特殊文字](strikes.md#words)\n- [大量大寫](strikes.md#allcaps)\n- [拷貝訊息](strikes.md#duplicatetext)\n- [洗頻訊息](strikes.md#quickmessages)\n- [提及使用者](strikes.md#mentionusers)\n- [提及身分組](strikes.md#mentionroles)\n- [表情符號](strikes.md#emojis)\n\n您必須自訂記點次數如果有人違反上述規定。您可以使用 `strikeconfig` 指令：\n\n```text\n!strikeconfig <violationType> <numberOfStrikes>\n```\n\n舉例來說，如果您希望使用者違反 `邀請連結` 時被記點 `2` 次，您可以執行以下指令：\n\n```text\n!strikeconfig invites 2\n```\n\n直接使用指令可確認目前的設定：\n\n```text\n!strikeconfig\n```"
+				},
+				"violations": {
+					"title": "違規事項的詳細資訊",
+					"invites": "當使用者發送另一個伺服器的邀請連結時就會觸發此規定。\n\n例如：\n\n`!strikeconfig invites 1`\n\n刪除違規事項則請用：\n\n`!strikeconfig invites 0`\n\n**設置選項：**\n\n- [自動審核邀請連結啟用](../../reference/settings?id=enabled-2)",
+					"links": "當使用者發送一般連結時就會觸發此規定。\n\n例如：\n\n`!strikeconfig links 1`\n\n刪除違規事項則請用：\n\n`!strikeconfig links 0`\n\n**設置選項：**\n\n- [自動審核一般連結啟用](../../reference/settings?id=enabled-3)\n- [自動審核一般連結白名單](../../reference/settings?id=whitelist)\n- [自動審核一般連結黑名單](../../reference/settings?id=blacklist)\n- [自動審核重新導向連結](../../reference/settings?id=follow-redirects)",
+					"words": "當使用者發送特殊文字時就會觸發此規定。\n\n例如：\n\n`!strikeconfig words 1`\n\n刪除違規事項則請用：\n\n`!strikeconfig words 0`\n\n**設置選項：**\n\n- [自動審核特殊文字啟用](../../reference/settings?id=enabled-4)\n- [自動審核特殊文字黑名單](../../reference/settings?id=blacklist-1)",
+					"allCaps": "當使用者發送大量大寫文字時就會觸發此規定。\n\n例如：\n\n`!strikeconfig allCaps 1`\n\n刪除違規事項則請用：\n\n`!strikeconfig allCaps 0`\n\n**設置選項：**\n\n- [自動審核大量大寫啟用](../../reference/settings?id=enabled-5)\n- [自動審核大量大寫最少字數](../../reference/settings?id=min-characters)\n- [自動審核大量大寫百分比](../../reference/settings?id=percentage-caps)",
+					"duplicateText": "當使用者多次發送拷貝訊息時就會觸發此規定。\n\n例如：\n\n`!strikeconfig duplicateText 1`\n\n刪除違規事項則請用：\n\n`!strikeconfig duplicateText 0`\n\n**設置選項：**\n\n- [自動審核拷貝訊息啟用](../../reference/settings?id=enabled-6)\n- [自動審核拷貝訊息發送間隔](../../reference/settings?id=timeframe-in-seconds)",
+					"quickMessages": "當使用者快速發送洗頻訊息時就會觸發此規定。\n\n例如：\n\n`!strikeconfig quickMessages 1`\n\n刪除違規事項則請用：\n\n`!strikeconfig quickMessages 0`\n\n**設置選項：**\n\n- [自動審核洗頻訊息啟用](../../reference/settings?id=enabled-7)\n- [自動審核洗頻訊息數量](../../reference/settings?id=-of-messages)\n- [自動審核洗頻訊息發送間隔](../../reference/settings?id=timeframe-in-seconds-1)",
+					"mentionUsers": "當使用者提及多個使用者時就會觸發此規定。\n\n例如：\n\n`!strikeconfig mentionUsers 1`\n\n刪除違規事項則請用：\n\n`!strikeconfig mentionUsers 0`\n\n**設置選項：**\n\n- [自動審核提及使用者啟用](../../reference/settings?id=enabled-8)\n- [自動審核提及使用者數量](../../reference/settings?id=max-of-mentions)",
+					"mentionRoles": "當使用者提及多個身分組時就會觸發此規定。\n\n例如：\n\n`!strikeconfig mentionRoles 1`\n\n刪除違規事項則請用：\n\n`!strikeconfig mentionRoles 0`\n\n**設置選項：**\n\n- [自動審核提及身分組啟用](../../reference/settings?id=enabled-9)\n- [自動審核提及身分組數量](../../reference/settings?id=max-of-mentions-1)",
+					"emojis": "當使用者發送多個表情符號時就會觸發此規定。\n\n例如：\n\n`!strikeconfig emojis 1`\n\n刪除違規事項則請用：\n\n`!strikeconfig emojis 0`\n\n**設置選項：**\n\n- [自動審核表情符號啟用](../../reference/settings?id=enabled-10)\n- [自動審核表情符號數量](../../reference/settings?id=max-of-emojis)"
+				}
+			}
+		},
+		"music": {
+			"title": "音樂",
+			"overview": {
+				"title": "概述",
+				"description": "音樂功能目前已禁用。近期內沒有重新啟用的計劃。"
+			}
+		}
+	},
+	"other": {
+		"title": "其他",
+		"donating": {
+			"title": "贊助",
+			"description": "目前不接受任何贊助。",
+			"crypto": {
+				"title": "Crypto",
+				"description": "目前不接受 Crypto 贊助。"
+			}
+		},
+		"roadmap": {
+			"title": "未來規劃"
+		},
+		"support": {
+			"title": "支援",
+			"description": "如有疑問請先閱讀 [常見的問題與答案(常見問答)]({{{ faqLink }}}) 。\n\n如果沒有找到答案，請加入我們的 [支援伺服器]({{{ discordInvite }}}) ，在 [#faq 頻道]({{{ faqChannelLink }}}) 有更詳細的問與答。\n\n最後，如果以上均無法解答您的疑惑，請查看 [#support 頻道]({{{ supportChannelLink }}}) 是否有您的疑問。如果仍然沒有，請輸入 `6` ，會有專人為您服務。\n(**請務必在請求專人協助前先完整閱讀我們的#faq頻道**)"
+		},
+		"translations": {
+			"title": "翻譯",
+			"description": "InviteManager 需要大家幫忙翻譯成各種不同的語言。非常感謝您的幫助，如果您有意願提供協助，請查看以下連結。",
+			"help": {
+				"title": "協助翻譯",
+				"description": "如果您有意願協助翻譯機器人或網站，請加入我們的 [支援伺服器]({{{ discordLink }}}) 與我們聯繫，我們可以邀請您至我們的 [Transifex 團隊]({{{ transifexLink }}}) 。"
+			}
+		},
+		"webpanel": {
+			"title": "網頁版",
+			"description": "目前近期內沒有重新啟用網頁版的計劃。"
+		},
+		"changelog": {
+			"title": "更新日誌"
+		},
+		"openSource": {
+			"title": "開放式原碼",
+			"description": "InviteManager 是開放式原碼，歡迎大家貢獻開發。",
+			"bot": {
+				"title": "主要機器人",
+				"description": "如果您有意願貢獻開發或自行營運機器人請查看我們的 [GitHub 專案]({{{ link }}})"
+			}
+		}
+	},
+	"start": {
+		"title": "開始設定",
+		"description": "想要開始設定的話，請在您的伺服器上執行 `!setup` 指令。",
+		"alpha": {
+			"title": "測試版機器人",
+			"intro": "`InviteManager Alpha` 是拿來測試新功能的機器人。測試機器人不會隨時保持穩定，但如果您使用此機器人，您可以在第一時間試用這些功能，而且您可以給我們回饋，讓他們變得更加完善。",
+			"linkDescription": "InviteManager Alpha 的連結在這裡",
+			"disabled": "禁用"
+		},
+		"faq": {
+			"title": "常見問答",
+			"prefix": {
+				"title": "我該如何更改機器人的指令前綴？",
+				"description": "您可以使用 `!config prefix -` 來更改前綴指令。\n\n如果您不知道目前的前綴指令，則可以使用 `@InviteManager config prefix` 來得知。"
+			},
+			"joinLeaveChannel": {
+				"title": "我該如何設定加入和離開訊息？",
+				"description": "設定頻道請用\n\n`!config joinMessageChannel #channel`\n\n或\n\n`!config leaveMessageChannel #channel`。\n\n設定完之後，新的加入和離開訊息就會顯示在該頻道。"
+			},
+			"joinLeaveMessage": {
+				"title": "我可以自訂加入和離開訊息嗎？",
+				"description": "完全可以！您可以更改的範例如下：\n\n`!config joinMessage {memberMention} **joined**; Invited by **{inviterName}** (**{numInvites}** invites)`\n\n或\n\n`!config leaveMessage {memberName} **left**; Invited by **{inviterName}**`。\n\n有很多預留參數是可用的。你可以在 [自訂訊息]({{{ link }}}) 頁面找到完整的清單。"
+			},
+			"ranks": {
+				"title": "甚麼是等級？我可以怎麼使用它們？",
+				"description": "等級是在人們達到一定的邀請數量時自動指派身分組。舉例來說，如果您有一個身分組叫 `@Beginner` 然後您希望擁有 5 以上邀請數量的人被新增到身分組，您可以新增一個等級如下： `!add-rank @Beginner 5 (如果您需要一個描述)` 。當有人達到 5 個邀請時，他就會自動被新增到身分組！"
+			},
+			"channel": {
+				"title": "我可以在所有的頻道除了其中一個/一些禁用機器人？",
+				"description": "在您不想要機器人回覆的頻道取消機器人的閱讀訊息權限。"
+			},
+			"limitations": {
+				"title": "限制：在機器人加入伺服器以前無法追蹤。",
+				"description": "追蹤（誰邀請誰）只會在您邀請機器人後才開始運作。在您邀請了它之後，機器人將持續追蹤所有人的邀請數量，請放心。額外資訊只能在您邀請機器人後開始收集。"
+			}
+		},
+		"pro": {
+			"title": "高級版機器人",
+			"description": "目前不提供高級版機器人。普通版機器人都已經啟用所有的高級版功能。"
+		},
+		"quick": {
+			"title": "快速設定",
+			"setup": {
+				"title": "設置選項",
+				"description": "如果要開始，請先從 [我們的機器人](./our-bots) 頁面邀請機器人。\n\n接著請確認機器人在該頻道是否有 `檢視頻道` 及 `發送訊息` 權限，然後使用 `!setup` 指令。\n\n此指令會告訴您機器人是否缺少任何必要的權限。",
+				"first": {
+					"title": "第一步",
+					"description": "您應該最想要設定加入及離開訊息的頻道。請前往 [常見問答](./faq) 來獲取詳細資訊。"
+				}
+			}
+		},
+		"ourBots": {
+			"title": "我們的機器人",
+			"subtitle": "邀請機器人",
+			"description": "InviteManager 有兩個永久運行的相同機器人。除了頭像及狀態不同，兩者的功能皆**__完全相同__**。\n\n**邀請藍色機器人：**\n{{{ blueBotLink }}}\n\n**邀請黃色機器人：**\n{{{ yellowBotLink }}}"
+		}
+	},
+	"reference": {
+		"title": "參考資料",
+		"commands": {
+			"title": "指令"
+		},
+		"settings": {
+			"title": "設置選項"
+		}
+	},
+	"premium": {
+		"title": "高級版",
+		"description": "我們不提供高級版機器人。兩隻 [我們的機器人]({{{ ourBotsLink }}}) 都已經啟用所有高級版的功能。",
+		"features": {
+			"title": "功能",
+			"first": "加入和離開訊息的格式（嵌入式訊息）",
+			"second": "排行榜每 5 分鐘更新一次"
+		},
+		"tiers": {
+			"title": "價位"
+		},
+		"setup": {
+			"title": "設置選項"
+		}
+	},
+	"messages": {
+		"leaveUnknownInviter": "messages.leaveUnknownInviter",
+		"joinUnknownInviter": "messages.joinUnknownInviter"
+	},
+	"settings": {
+		"prefix": {
+			"title": "settings.prefix.title",
+			"description": "settings.prefix.description"
+		},
+		"lang": {
+			"title": "settings.lang.title",
+			"description": "settings.lang.description"
+		},
+		"logChannel": {
+			"title": "settings.logChannel.title",
+			"description": "settings.logChannel.description"
+		},
+		"getUpdates": {
+			"title": "settings.getUpdates.title",
+			"description": "settings.getUpdates.description"
+		},
+		"channels": {
+			"title": "settings.channels.title",
+			"description": "settings.channels.description"
+		},
+		"ignoredChannels": {
+			"title": "settings.ignoredChannels.title",
+			"description": "settings.ignoredChannels.description"
+		},
+		"joinRoles": {
+			"title": "settings.joinRoles.title",
+			"description": "settings.joinRoles.description"
+		},
+		"joinMessage": {
+			"title": "settings.joinMessage.title",
+			"description": "settings.joinMessage.description"
+		},
+		"joinMessageVanity": {
+			"title": "settings.joinMessageVanity.title",
+			"description": "settings.joinMessageVanity.description"
+		},
+		"joinMessageChannel": {
+			"title": "settings.joinMessageChannel.title",
+			"description": "settings.joinMessageChannel.description"
+		},
+		"leaveMessage": {
+			"title": "settings.leaveMessage.title",
+			"description": "settings.leaveMessage.description"
+		},
+		"leaveMessageVanity": {
+			"title": "settings.leaveMessageVanity.title",
+			"description": "settings.leaveMessageVanity.description"
+		},
+		"leaveMessageChannel": {
+			"title": "settings.leaveMessageChannel.title",
+			"description": "settings.leaveMessageChannel.description"
+		},
+		"leaderboardStyle": {
+			"title": "settings.leaderboardStyle.title",
+			"description": "settings.leaderboardStyle.description"
+		},
+		"hideLeftMembersFromLeaderboard": {
+			"title": "settings.hideLeftMembersFromLeaderboard.title",
+			"description": "settings.hideLeftMembersFromLeaderboard.description"
+		},
+		"autoSubtractFakes": {
+			"title": "settings.autoSubtractFakes.title",
+			"description": "settings.autoSubtractFakes.description"
+		},
+		"autoSubtractLeaves": {
+			"title": "settings.autoSubtractLeaves.title",
+			"description": "settings.autoSubtractLeaves.description"
+		},
+		"autoSubtractLeaveThreshold": {
+			"title": "settings.autoSubtractLeaveThreshold.title",
+			"description": "settings.autoSubtractLeaveThreshold.description"
+		},
+		"rankAssignmentStyle": {
+			"title": "settings.rankAssignmentStyle.title",
+			"description": "settings.rankAssignmentStyle.description"
+		},
+		"rankAnnouncementChannel": {
+			"title": "settings.rankAnnouncementChannel.title",
+			"description": "settings.rankAnnouncementChannel.description"
+		},
+		"rankAnnouncementMessage": {
+			"title": "settings.rankAnnouncementMessage.title",
+			"description": "settings.rankAnnouncementMessage.description"
+		},
+		"captchaVerificationOnJoin": {
+			"title": "settings.captchaVerificationOnJoin.title",
+			"description": "settings.captchaVerificationOnJoin.description"
+		},
+		"captchaVerificationWelcomeMessage": {
+			"title": "settings.captchaVerificationWelcomeMessage.title",
+			"description": "settings.captchaVerificationWelcomeMessage.description"
+		},
+		"captchaVerificationSuccessMessage": {
+			"title": "settings.captchaVerificationSuccessMessage.title",
+			"description": "settings.captchaVerificationSuccessMessage.description"
+		},
+		"captchaVerificationFailedMessage": {
+			"title": "settings.captchaVerificationFailedMessage.title",
+			"description": "settings.captchaVerificationFailedMessage.description"
+		},
+		"captchaVerificationTimeout": {
+			"title": "settings.captchaVerificationTimeout.title",
+			"description": "settings.captchaVerificationTimeout.description"
+		},
+		"captchaVerificationLogEnabled": {
+			"title": "settings.captchaVerificationLogEnabled.title",
+			"description": "settings.captchaVerificationLogEnabled.description"
+		},
+		"autoModEnabled": {
+			"title": "settings.autoModEnabled.title",
+			"description": "settings.autoModEnabled.description"
+		},
+		"autoModModeratedChannels": {
+			"title": "settings.autoModModeratedChannels.title",
+			"description": "settings.autoModModeratedChannels.description"
+		},
+		"autoModModeratedRoles": {
+			"title": "settings.autoModModeratedRoles.title",
+			"description": "settings.autoModModeratedRoles.description"
+		},
+		"autoModIgnoredChannels": {
+			"title": "settings.autoModIgnoredChannels.title",
+			"description": "settings.autoModIgnoredChannels.description"
+		},
+		"autoModIgnoredRoles": {
+			"title": "settings.autoModIgnoredRoles.title",
+			"description": "settings.autoModIgnoredRoles.description"
+		},
+		"mutedRole": {
+			"title": "settings.mutedRole.title",
+			"description": "settings.mutedRole.description"
+		},
+		"autoModDisabledForOldMembers": {
+			"title": "settings.autoModDisabledForOldMembers.title",
+			"description": "settings.autoModDisabledForOldMembers.description"
+		},
+		"autoModDisabledForOldMembersThreshold": {
+			"title": "settings.autoModDisabledForOldMembersThreshold.title",
+			"description": "settings.autoModDisabledForOldMembersThreshold.description"
+		},
+		"autoModLogEnabled": {
+			"title": "settings.autoModLogEnabled.title",
+			"description": "settings.autoModLogEnabled.description"
+		},
+		"modLogChannel": {
+			"title": "settings.modLogChannel.title",
+			"description": "settings.modLogChannel.description"
+		},
+		"autoModDeleteBotMessage": {
+			"title": "settings.autoModDeleteBotMessage.title",
+			"description": "settings.autoModDeleteBotMessage.description"
+		},
+		"autoModDeleteBotMessageTimeoutInSeconds": {
+			"title": "settings.autoModDeleteBotMessageTimeoutInSeconds.title",
+			"description": "settings.autoModDeleteBotMessageTimeoutInSeconds.description"
+		},
+		"modPunishmentBanDeleteMessage": {
+			"title": "settings.modPunishmentBanDeleteMessage.title",
+			"description": "settings.modPunishmentBanDeleteMessage.description"
+		},
+		"modPunishmentKickDeleteMessage": {
+			"title": "settings.modPunishmentKickDeleteMessage.title",
+			"description": "settings.modPunishmentKickDeleteMessage.description"
+		},
+		"modPunishmentSoftbanDeleteMessage": {
+			"title": "settings.modPunishmentSoftbanDeleteMessage.title",
+			"description": "settings.modPunishmentSoftbanDeleteMessage.description"
+		},
+		"modPunishmentWarnDeleteMessage": {
+			"title": "settings.modPunishmentWarnDeleteMessage.title",
+			"description": "settings.modPunishmentWarnDeleteMessage.description"
+		},
+		"modPunishmentMuteDeleteMessage": {
+			"title": "settings.modPunishmentMuteDeleteMessage.title",
+			"description": "settings.modPunishmentMuteDeleteMessage.description"
+		},
+		"autoModInvitesEnabled": {
+			"title": "settings.autoModInvitesEnabled.title",
+			"description": "settings.autoModInvitesEnabled.description"
+		},
+		"autoModLinksEnabled": {
+			"title": "settings.autoModLinksEnabled.title",
+			"description": "settings.autoModLinksEnabled.description"
+		},
+		"autoModLinksWhitelist": {
+			"title": "settings.autoModLinksWhitelist.title",
+			"description": "settings.autoModLinksWhitelist.description"
+		},
+		"autoModLinksBlacklist": {
+			"title": "settings.autoModLinksBlacklist.title",
+			"description": "settings.autoModLinksBlacklist.description"
+		},
+		"autoModLinksFollowRedirects": {
+			"title": "settings.autoModLinksFollowRedirects.title",
+			"description": "settings.autoModLinksFollowRedirects.description"
+		},
+		"autoModWordsEnabled": {
+			"title": "settings.autoModWordsEnabled.title",
+			"description": "settings.autoModWordsEnabled.description"
+		},
+		"autoModWordsBlacklist": {
+			"title": "settings.autoModWordsBlacklist.title",
+			"description": "settings.autoModWordsBlacklist.description"
+		},
+		"autoModAllCapsEnabled": {
+			"title": "settings.autoModAllCapsEnabled.title",
+			"description": "settings.autoModAllCapsEnabled.description"
+		},
+		"autoModAllCapsMinCharacters": {
+			"title": "settings.autoModAllCapsMinCharacters.title",
+			"description": "settings.autoModAllCapsMinCharacters.description"
+		},
+		"autoModAllCapsPercentageCaps": {
+			"title": "settings.autoModAllCapsPercentageCaps.title",
+			"description": "settings.autoModAllCapsPercentageCaps.description"
+		},
+		"autoModDuplicateTextEnabled": {
+			"title": "settings.autoModDuplicateTextEnabled.title",
+			"description": "settings.autoModDuplicateTextEnabled.description"
+		},
+		"autoModDuplicateTextTimeframeInSeconds": {
+			"title": "settings.autoModDuplicateTextTimeframeInSeconds.title",
+			"description": "settings.autoModDuplicateTextTimeframeInSeconds.description"
+		},
+		"autoModQuickMessagesEnabled": {
+			"title": "settings.autoModQuickMessagesEnabled.title",
+			"description": "settings.autoModQuickMessagesEnabled.description"
+		},
+		"autoModQuickMessagesNumberOfMessages": {
+			"title": "settings.autoModQuickMessagesNumberOfMessages.title",
+			"description": "settings.autoModQuickMessagesNumberOfMessages.description"
+		},
+		"autoModQuickMessagesTimeframeInSeconds": {
+			"title": "settings.autoModQuickMessagesTimeframeInSeconds.title",
+			"description": "settings.autoModQuickMessagesTimeframeInSeconds.description"
+		},
+		"autoModMentionUsersEnabled": {
+			"title": "settings.autoModMentionUsersEnabled.title",
+			"description": "settings.autoModMentionUsersEnabled.description"
+		},
+		"autoModMentionUsersMaxNumberOfMentions": {
+			"title": "settings.autoModMentionUsersMaxNumberOfMentions.title",
+			"description": "settings.autoModMentionUsersMaxNumberOfMentions.description"
+		},
+		"autoModMentionRolesEnabled": {
+			"title": "settings.autoModMentionRolesEnabled.title",
+			"description": "settings.autoModMentionRolesEnabled.description"
+		},
+		"autoModMentionRolesMaxNumberOfMentions": {
+			"title": "settings.autoModMentionRolesMaxNumberOfMentions.title",
+			"description": "settings.autoModMentionRolesMaxNumberOfMentions.description"
+		},
+		"autoModEmojisEnabled": {
+			"title": "settings.autoModEmojisEnabled.title",
+			"description": "settings.autoModEmojisEnabled.description"
+		},
+		"autoModEmojisMaxNumberOfEmojis": {
+			"title": "settings.autoModEmojisMaxNumberOfEmojis.title",
+			"description": "settings.autoModEmojisMaxNumberOfEmojis.description"
+		},
+		"autoModHoistEnabled": {
+			"title": "settings.autoModHoistEnabled.title",
+			"description": "settings.autoModHoistEnabled.description"
+		},
+		"musicVolume": {
+			"title": "settings.musicVolume.title",
+			"description": "settings.musicVolume.description"
+		},
+		"announceNextSong": {
+			"title": "settings.announceNextSong.title",
+			"description": "settings.announceNextSong.description"
+		},
+		"announcementVoice": {
+			"title": "settings.announcementVoice.title",
+			"description": "settings.announcementVoice.description"
+		},
+		"fadeMusicOnTalk": {
+			"title": "settings.fadeMusicOnTalk.title",
+			"description": "settings.fadeMusicOnTalk.description"
+		},
+		"fadeMusicEndDelay": {
+			"title": "settings.fadeMusicEndDelay.title",
+			"description": "settings.fadeMusicEndDelay.description"
+		},
+		"defaultMusicPlatform": {
+			"title": "settings.defaultMusicPlatform.title",
+			"description": "settings.defaultMusicPlatform.description"
+		},
+		"disabledMusicPlatforms": {
+			"title": "settings.disabledMusicPlatforms.title",
+			"description": "settings.disabledMusicPlatforms.description"
+		},
+		"groups": {
+			"general": {
+				"title": "settings.groups.general.title",
+				"description": "settings.groups.general.description"
+			},
+			"invites": {
+				"title": "settings.groups.invites.title",
+				"general": {
+					"title": "settings.groups.invites.general.title",
+					"description": "settings.groups.invites.general.description"
+				},
+				"joins": {
+					"title": "settings.groups.invites.joins.title",
+					"description": "settings.groups.invites.joins.description"
+				},
+				"leaves": {
+					"title": "settings.groups.invites.leaves.title",
+					"description": "settings.groups.invites.leaves.description"
+				},
+				"leaderboard": {
+					"title": "settings.groups.invites.leaderboard.title",
+					"description": "settings.groups.invites.leaderboard.description"
+				},
+				"fakes": {
+					"title": "settings.groups.invites.fakes.title",
+					"description": "settings.groups.invites.fakes.description"
+				},
+				"ranks": {
+					"title": "settings.groups.invites.ranks.title",
+					"description": "settings.groups.invites.ranks.description"
+				},
+				"description": "settings.groups.invites.description"
+			},
+			"moderation": {
+				"title": "settings.groups.moderation.title",
+				"captcha": {
+					"title": "settings.groups.moderation.captcha.title",
+					"description": "settings.groups.moderation.captcha.description"
+				},
+				"general": {
+					"title": "settings.groups.moderation.general.title",
+					"description": "settings.groups.moderation.general.description"
+				},
+				"logging": {
+					"title": "settings.groups.moderation.logging.title",
+					"description": "settings.groups.moderation.logging.description"
+				},
+				"invites": {
+					"title": "settings.groups.moderation.invites.title",
+					"description": "settings.groups.moderation.invites.description"
+				},
+				"links": {
+					"title": "settings.groups.moderation.links.title",
+					"description": "settings.groups.moderation.links.description"
+				},
+				"bannedWords": {
+					"title": "settings.groups.moderation.bannedWords.title",
+					"description": "settings.groups.moderation.bannedWords.description"
+				},
+				"caps": {
+					"title": "settings.groups.moderation.caps.title",
+					"description": "settings.groups.moderation.caps.description"
+				},
+				"duplicate": {
+					"title": "settings.groups.moderation.duplicate.title",
+					"description": "settings.groups.moderation.duplicate.description"
+				},
+				"spam": {
+					"title": "settings.groups.moderation.spam.title",
+					"description": "settings.groups.moderation.spam.description"
+				},
+				"mentions": {
+					"title": "settings.groups.moderation.mentions.title",
+					"description": "settings.groups.moderation.mentions.description"
+				},
+				"emojis": {
+					"title": "settings.groups.moderation.emojis.title",
+					"description": "settings.groups.moderation.emojis.description"
+				},
+				"description": "settings.groups.moderation.description"
+			},
+			"music": {
+				"title": "settings.groups.music.title",
+				"general": {
+					"title": "settings.groups.music.general.title"
+				},
+				"announcement": {
+					"title": "settings.groups.music.announcement.title"
+				},
+				"fadeMusic": {
+					"title": "settings.groups.music.fadeMusic.title"
+				},
+				"platform": {
+					"title": "settings.groups.music.platform.title"
+				},
+				"description": "settings.groups.music.description"
+			}
+		}
+	},
+	"resolvers": {
+		"boolean": {
+			"type": "resolvers.boolean.type",
+			"typeInfo": "resolvers.boolean.typeInfo"
+		},
+		"number": {
+			"type": "resolvers.number.type",
+			"typeInfo": "resolvers.number.typeInfo",
+			"invalid": "resolvers.number.invalid"
+		},
+		"enum": {
+			"type": "resolvers.enum.type",
+			"typeInfo": "resolvers.enum.typeInfo",
+			"validValues": "resolvers.enum.validValues",
+			"invalid": "resolvers.enum.invalid"
+		},
+		"invitecode": {
+			"type": "resolvers.invitecode.type",
+			"typeInfo": "resolvers.invitecode.typeInfo"
+		},
+		"user": {
+			"type": "resolvers.user.type",
+			"typeInfo": "resolvers.user.typeInfo"
+		},
+		"role": {
+			"type": "resolvers.role.type",
+			"typeInfo": "resolvers.role.typeInfo"
+		},
+		"channel": {
+			"type": "resolvers.channel.type",
+			"typeInfo": "resolvers.channel.typeInfo"
+		},
+		"command": {
+			"type": "resolvers.command.type",
+			"typeInfo": "resolvers.command.typeInfo",
+			"validValues": "resolvers.command.validValues"
+		},
+		"string": {
+			"type": "resolvers.string.type",
+			"typeInfo": "resolvers.string.typeInfo"
+		},
+		"date": {
+			"type": "resolvers.date.type",
+			"typeInfo": "resolvers.date.typeInfo"
+		},
+		"duration": {
+			"type": "resolvers.duration.type",
+			"typeInfo": "resolvers.duration.typeInfo"
+		},
+		"settingsvalue": {
+			"type": "resolvers.settingsvalue.type"
+		},
+		"member": {
+			"type": "resolvers.member.type"
+		},
+		"invalid": "resolvers.invalid",
+		"missingRequired": "resolvers.missingRequired"
+	},
+	"cmd": {
+		"addInvites": {
+			"self": {
+				"description": "cmd.addInvites.self.description",
+				"args": {
+					"user": "cmd.addInvites.self.args.user",
+					"amount": "cmd.addInvites.self.args.amount",
+					"reason": "cmd.addInvites.self.args.reason"
+				}
+			}
+		},
+		"clearInvites": {
+			"self": {
+				"description": "cmd.clearInvites.self.description",
+				"flags": {
+					"date": "cmd.clearInvites.self.flags.date",
+					"clearBonus": "cmd.clearInvites.self.flags.clearBonus"
+				},
+				"args": {
+					"user": "cmd.clearInvites.self.args.user"
+				}
+			}
+		},
+		"createInvite": {
+			"self": {
+				"description": "cmd.createInvite.self.description",
+				"args": {
+					"name": "cmd.createInvite.self.args.name",
+					"channel": "cmd.createInvite.self.args.channel"
+				}
+			},
+			"done": "cmd.createInvite.done"
+		},
+		"info": {
+			"self": {
+				"description": "cmd.info.self.description",
+				"args": {
+					"user": "cmd.info.self.args.user",
+					"details": "cmd.info.self.args.details",
+					"page": "cmd.info.self.args.page"
+				}
+			},
+			"lastJoined": {
+				"title": "cmd.info.lastJoined.title",
+				"notInGuild": "cmd.info.lastJoined.notInGuild"
+			},
+			"joined": {
+				"title": "cmd.info.joined.title",
+				"text": "cmd.info.joined.text"
+			},
+			"created": {
+				"title": "cmd.info.created.title"
+			},
+			"invites": {
+				"title": "cmd.info.invites.title",
+				"text": "cmd.info.invites.text",
+				"clear": {
+					"title": "cmd.info.invites.clear.title",
+					"text": "cmd.info.invites.clear.text"
+				}
+			},
+			"joins": {
+				"title": "cmd.info.joins.title",
+				"unknown": "cmd.info.joins.unknown"
+			},
+			"regularInvites": {
+				"entry": "cmd.info.regularInvites.entry",
+				"title": "cmd.info.regularInvites.title",
+				"none": "cmd.info.regularInvites.none"
+			},
+			"bonusInvites": {
+				"title": "cmd.info.bonusInvites.title",
+				"none": "cmd.info.bonusInvites.none"
+			},
+			"invitedMembers": {
+				"details": "cmd.info.invitedMembers.details",
+				"title": "cmd.info.invitedMembers.title",
+				"none": "cmd.info.invitedMembers.none"
+			}
+		},
+		"inviteCodes": {
+			"self": {
+				"description": "cmd.inviteCodes.self.description"
+			},
+			"title": "cmd.inviteCodes.title",
+			"noCodes": "cmd.inviteCodes.noCodes",
+			"dmSent": "cmd.inviteCodes.dmSent"
+		},
+		"inviteDetails": {
+			"self": {
+				"description": "cmd.inviteDetails.self.description",
+				"args": {
+					"user": "cmd.inviteDetails.self.args.user"
+				}
+			},
+			"entry": "cmd.inviteDetails.entry",
+			"noInviteCodes": "cmd.inviteDetails.noInviteCodes"
+		},
+		"invites": {
+			"self": {
+				"description": "cmd.invites.self.description",
+				"args": {
+					"user": "cmd.invites.self.args.user"
+				}
+			},
+			"amount": {
+				"self": "cmd.invites.amount.self"
+			},
+			"nextRank": {
+				"self": "cmd.invites.nextRank.self"
+			},
+			"highestRank": {
+				"self": "cmd.invites.highestRank.self"
+			}
+		},
+		"leaderboard": {
+			"self": {
+				"description": "cmd.leaderboard.self.description",
+				"args": {
+					"page": "cmd.leaderboard.self.args.page"
+				}
+			},
+			"from": "cmd.leaderboard.from",
+			"lastUpdate": "cmd.leaderboard.lastUpdate",
+			"entry": "cmd.leaderboard.entry",
+			"title": "cmd.leaderboard.title"
+		},
+		"removeInvites": {
+			"self": {
+				"description": "cmd.removeInvites.self.description",
+				"args": {
+					"user": "cmd.removeInvites.self.args.user",
+					"amount": "cmd.removeInvites.self.args.amount",
+					"reason": "cmd.removeInvites.self.args.reason"
+				}
+			}
+		},
+		"restoreInvites": {
+			"self": {
+				"description": "cmd.restoreInvites.self.description",
+				"args": {
+					"user": "cmd.restoreInvites.self.args.user"
+				}
+			}
+		},
+		"subtractFakes": {
+			"self": {
+				"description": "cmd.subtractFakes.self.description"
+			}
+		},
+		"subtractLeaves": {
+			"self": {
+				"description": "cmd.subtractLeaves.self.description"
+			}
+		},
+		"addRank": {
+			"self": {
+				"description": "cmd.addRank.self.description",
+				"args": {
+					"role": "cmd.addRank.self.args.role",
+					"invites": "cmd.addRank.self.args.invites",
+					"info": "cmd.addRank.self.args.info"
+				}
+			}
+		},
+		"fixRanks": {
+			"self": {
+				"description": "cmd.fixRanks.self.description"
+			}
+		},
+		"ranks": {
+			"self": {
+				"description": "cmd.ranks.self.description",
+				"args": {
+					"page": "cmd.ranks.self.args.page"
+				}
+			}
+		},
+		"removeRank": {
+			"self": {
+				"description": "cmd.removeRank.self.description",
+				"args": {
+					"rank": "cmd.removeRank.self.args.rank"
+				}
+			}
+		},
+		"botConfig": {
+			"self": {
+				"description": "cmd.botConfig.self.description",
+				"args": {
+					"key": "cmd.botConfig.self.args.key",
+					"value": "cmd.botConfig.self.args.value"
+				}
+			}
+		},
+		"config": {
+			"self": {
+				"description": "cmd.config.self.description",
+				"args": {
+					"key": "cmd.config.self.args.key",
+					"value": "cmd.config.self.args.value"
+				}
+			},
+			"changed": {
+				"text": "cmd.config.changed.text"
+			},
+			"previous": {
+				"title": "cmd.config.previous.title"
+			},
+			"new": {
+				"title": "cmd.config.new.title"
+			},
+			"sameValue": "cmd.config.sameValue",
+			"current": {
+				"title": "cmd.config.current.title",
+				"text": "cmd.config.current.text",
+				"clear": "cmd.config.current.clear",
+				"notSet": "cmd.config.current.notSet"
+			},
+			"none": "cmd.config.none"
+		},
+		"interactiveConfig": {
+			"self": {
+				"description": "cmd.interactiveConfig.self.description"
+			},
+			"welcome": "cmd.interactiveConfig.welcome",
+			"none": "cmd.interactiveConfig.none",
+			"values": {
+				"string": "cmd.interactiveConfig.values.string",
+				"channel": "cmd.interactiveConfig.values.channel"
+			},
+			"change": "cmd.interactiveConfig.change",
+			"new": "cmd.interactiveConfig.new"
+		},
+		"inviteCodeConfig": {
+			"self": {
+				"description": "cmd.inviteCodeConfig.self.description",
+				"args": {
+					"key": "cmd.inviteCodeConfig.self.args.key",
+					"inviteCode": "cmd.inviteCodeConfig.self.args.inviteCode",
+					"value": "cmd.inviteCodeConfig.self.args.value"
+				}
+			},
+			"title": "cmd.inviteCodeConfig.title",
+			"text": "cmd.inviteCodeConfig.text",
+			"keys": {
+				"title": "cmd.inviteCodeConfig.keys.title"
+			}
+		},
+		"memberConfig": {
+			"self": {
+				"description": "cmd.memberConfig.self.description",
+				"args": {
+					"key": "cmd.memberConfig.self.args.key",
+					"user": "cmd.memberConfig.self.args.user",
+					"value": "cmd.memberConfig.self.args.value"
+				}
+			}
+		},
+		"permissions": {
+			"self": {
+				"description": "cmd.permissions.self.description",
+				"args": {
+					"cmd": "cmd.permissions.self.args.cmd",
+					"role": "cmd.permissions.self.args.role"
+				}
+			}
+		},
+		"botInfo": {
+			"self": {
+				"description": "cmd.botInfo.self.description"
+			}
+		},
+		"credits": {
+			"self": {
+				"description": "cmd.credits.self.description"
+			}
+		},
+		"getBot": {
+			"self": {
+				"description": "cmd.getBot.self.description"
+			}
+		},
+		"help": {
+			"self": {
+				"description": "cmd.help.self.description",
+				"args": {
+					"command": "cmd.help.self.args.command"
+				}
+			},
+			"text": "cmd.help.text",
+			"links": "cmd.help.links"
+		},
+		"members": {
+			"self": {
+				"description": "cmd.members.self.description"
+			}
+		},
+		"ping": {
+			"self": {
+				"description": "cmd.ping.self.description"
+			}
+		},
+		"prefix": {
+			"self": {
+				"description": "cmd.prefix.self.description"
+			}
+		},
+		"setup": {
+			"self": {
+				"description": "cmd.setup.self.description"
+			}
+		},
+		"support": {
+			"self": {
+				"description": "cmd.support.self.description"
+			}
+		},
+		"export": {
+			"self": {
+				"description": "cmd.export.self.description",
+				"args": {
+					"type": "cmd.export.self.args.type"
+				}
+			}
+		},
+		"premium": {
+			"self": {
+				"description": "cmd.premium.self.description",
+				"args": {
+					"action": "cmd.premium.self.args.action"
+				}
+			}
+		},
+		"tryPremium": {
+			"self": {
+				"description": "cmd.tryPremium.self.description"
+			}
+		},
+		"ban": {
+			"self": {
+				"description": "cmd.ban.self.description",
+				"flags": {
+					"deleteMessageDays": "cmd.ban.self.flags.deleteMessageDays"
+				},
+				"args": {
+					"user": "cmd.ban.self.args.user",
+					"reason": "cmd.ban.self.args.reason"
+				}
+			}
+		},
+		"caseDelete": {
+			"self": {
+				"description": "cmd.caseDelete.self.description",
+				"args": {
+					"caseNumber": "cmd.caseDelete.self.args.caseNumber",
+					"reason": "cmd.caseDelete.self.args.reason"
+				}
+			}
+		},
+		"caseView": {
+			"self": {
+				"description": "cmd.caseView.self.description",
+				"args": {
+					"caseNumber": "cmd.caseView.self.args.caseNumber"
+				}
+			}
+		},
+		"check": {
+			"self": {
+				"description": "cmd.check.self.description",
+				"args": {
+					"user": "cmd.check.self.args.user"
+				}
+			}
+		},
+		"clean": {
+			"self": {
+				"description": "cmd.clean.self.description",
+				"args": {
+					"type": "cmd.clean.self.args.type",
+					"numberOfMessages": "cmd.clean.self.args.numberOfMessages"
+				}
+			}
+		},
+		"cleanShort": {
+			"self": {
+				"description": "cmd.cleanShort.self.description",
+				"args": {
+					"maxTextLength": "cmd.cleanShort.self.args.maxTextLength",
+					"numberOfMessages": "cmd.cleanShort.self.args.numberOfMessages"
+				}
+			}
+		},
+		"cleanText": {
+			"self": {
+				"description": "cmd.cleanText.self.description",
+				"args": {
+					"text": "cmd.cleanText.self.args.text",
+					"numberOfMessages": "cmd.cleanText.self.args.numberOfMessages"
+				}
+			}
+		},
+		"kick": {
+			"self": {
+				"description": "cmd.kick.self.description",
+				"args": {
+					"member": "cmd.kick.self.args.member",
+					"reason": "cmd.kick.self.args.reason"
+				}
+			}
+		},
+		"lockdown": {
+			"self": {
+				"description": "cmd.lockdown.self.description",
+				"flags": {
+					"timeout": "cmd.lockdown.self.flags.timeout"
+				},
+				"args": {
+					"channel": "cmd.lockdown.self.args.channel"
+				}
+			}
+		},
+		"mute": {
+			"self": {
+				"description": "cmd.mute.self.description",
+				"flags": {
+					"duration": "cmd.mute.self.flags.duration"
+				},
+				"args": {
+					"user": "cmd.mute.self.args.user",
+					"reason": "cmd.mute.self.args.reason"
+				}
+			}
+		},
+		"punishmentConfig": {
+			"self": {
+				"description": "cmd.punishmentConfig.self.description",
+				"args": {
+					"punishment": "cmd.punishmentConfig.self.args.punishment",
+					"strikes": "cmd.punishmentConfig.self.args.strikes",
+					"args": "cmd.punishmentConfig.self.args.args"
+				}
+			}
+		},
+		"purge": {
+			"self": {
+				"description": "cmd.purge.self.description",
+				"args": {
+					"quantity": "cmd.purge.self.args.quantity",
+					"user": "cmd.purge.self.args.user"
+				}
+			}
+		},
+		"purgeUntil": {
+			"self": {
+				"description": "cmd.purgeUntil.self.description",
+				"args": {
+					"messageID": "cmd.purgeUntil.self.args.messageID"
+				}
+			}
+		},
+		"softBan": {
+			"self": {
+				"description": "cmd.softBan.self.description",
+				"flags": {
+					"deleteMessageDays": "cmd.softBan.self.flags.deleteMessageDays"
+				},
+				"args": {
+					"user": "cmd.softBan.self.args.user",
+					"reason": "cmd.softBan.self.args.reason"
+				}
+			}
+		},
+		"strike": {
+			"self": {
+				"description": "cmd.strike.self.description",
+				"args": {
+					"member": "cmd.strike.self.args.member",
+					"type": "cmd.strike.self.args.type",
+					"amount": "cmd.strike.self.args.amount"
+				}
+			}
+		},
+		"strikeConfig": {
+			"self": {
+				"description": "cmd.strikeConfig.self.description",
+				"args": {
+					"violation": "cmd.strikeConfig.self.args.violation",
+					"strikes": "cmd.strikeConfig.self.args.strikes"
+				}
+			}
+		},
+		"unban": {
+			"self": {
+				"description": "cmd.unban.self.description",
+				"args": {
+					"user": "cmd.unban.self.args.user",
+					"reason": "cmd.unban.self.args.reason"
+				}
+			}
+		},
+		"unhoist": {
+			"self": {
+				"description": "cmd.unhoist.self.description"
+			}
+		},
+		"unmute": {
+			"self": {
+				"description": "cmd.unmute.self.description",
+				"args": {
+					"user": "cmd.unmute.self.args.user"
+				}
+			}
+		},
+		"warn": {
+			"self": {
+				"description": "cmd.warn.self.description",
+				"args": {
+					"member": "cmd.warn.self.args.member",
+					"reason": "cmd.warn.self.args.reason"
+				}
+			}
+		},
+		"disconnect": {
+			"self": {
+				"description": "cmd.disconnect.self.description"
+			}
+		},
+		"lyrics": {
+			"self": {
+				"description": "cmd.lyrics.self.description",
+				"flags": {
+					"live": "cmd.lyrics.self.flags.live"
+				}
+			}
+		},
+		"mashup": {
+			"self": {
+				"description": "cmd.mashup.self.description",
+				"args": {
+					"videos": "cmd.mashup.self.args.videos"
+				}
+			}
+		},
+		"nowPlaying": {
+			"self": {
+				"description": "cmd.nowPlaying.self.description",
+				"flags": {
+					"pin": "cmd.nowPlaying.self.flags.pin"
+				}
+			}
+		},
+		"pause": {
+			"self": {
+				"description": "cmd.pause.self.description"
+			}
+		},
+		"play": {
+			"self": {
+				"description": "cmd.play.self.description",
+				"flags": {
+					"platform": "cmd.play.self.flags.platform",
+					"next": "cmd.play.self.flags.next"
+				},
+				"args": {
+					"link": "cmd.play.self.args.link"
+				}
+			}
+		},
+		"queue": {
+			"self": {
+				"description": "cmd.queue.self.description"
+			}
+		},
+		"repeat": {
+			"self": {
+				"description": "cmd.repeat.self.description"
+			}
+		},
+		"resume": {
+			"self": {
+				"description": "cmd.resume.self.description"
+			}
+		},
+		"rewind": {
+			"self": {
+				"description": "cmd.rewind.self.description"
+			}
+		},
+		"search": {
+			"self": {
+				"description": "cmd.search.self.description",
+				"flags": {
+					"platform": "cmd.search.self.flags.platform"
+				},
+				"args": {
+					"search": "cmd.search.self.args.search"
+				}
+			}
+		},
+		"seek": {
+			"self": {
+				"description": "cmd.seek.self.description",
+				"args": {
+					"duration": "cmd.seek.self.args.duration"
+				}
+			}
+		},
+		"skip": {
+			"self": {
+				"description": "cmd.skip.self.description",
+				"args": {
+					"amount": "cmd.skip.self.args.amount"
+				}
+			}
+		},
+		"volume": {
+			"self": {
+				"description": "cmd.volume.self.description",
+				"args": {
+					"volume": "cmd.volume.self.args.volume"
+				}
+			}
+		},
+		"graph": {
+			"self": {
+				"description": "cmd.graph.self.description",
+				"args": {
+					"type": "cmd.graph.self.args.type",
+					"from": "cmd.graph.self.args.from",
+					"to": "cmd.graph.self.args.to"
+				}
+			}
+		}
+	},
+	"permissions": {
+		"rateLimit": "permissions.rateLimit"
+	},
+	"bot": {
+		"supportDiscord": {
+			"title": "bot.supportDiscord.title"
+		},
+		"invite": {
+			"title": "bot.invite.title"
+		},
+		"website": {
+			"title": "bot.website.title"
+		},
+		"patreon": {
+			"title": "bot.patreon.title"
+		}
+	}
+}

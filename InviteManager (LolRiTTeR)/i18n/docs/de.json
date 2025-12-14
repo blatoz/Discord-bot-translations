@@ -1,0 +1,283 @@
+{
+	"lang": "Deutsch",
+	"modules": {
+		"title": "Module",
+		"invites": {
+			"title": "Einladungsmanagement",
+			"description": "Während unser Bot auf deinem Server ist, verfolgen wir jede Einladung, die auf deinem Server stattfindet. Discord zeigt dir nur, wer wie viele Einladungen hat. Unser Bot analysiert auch, wer von wem eingeladen wurde. Dies ermöglicht unserem Bot gefälschte Einladungen zu erkennen und zu sehen, wer versucht das Einladungssystem zu betrügen.",
+			"examples": {
+				"title": "Beispiele",
+				"headlines": {
+					"examples": "Beispiele",
+					"normal": "Normal",
+					"normalVanity": "Normal (Vanity)",
+					"embed": "Embed",
+					"screenshot": "Screenshot",
+					"code": "Code",
+					"joinMessage": "Beitrittsnachricht",
+					"joinMessageVanity": "Join Message (Vanity)",
+					"joinEmbed": "Eingebettete Beitrittsnachricht",
+					"joinEmbedVanity": "Join Embed (Vanity)",
+					"leaveMessage": "Verlassensnachricht",
+					"leaveMessageVanity": "Leave Message (Vanity)",
+					"leaveEmbed": "Eingebettete Verlassensnachricht",
+					"leaveEmbedVanity": "Leave Embed (Vanity)"
+				},
+				"content": {
+					"normalCode": "```text\n!config joinMessage {memberMention} ist dem Server **beigetreten**; Eingeladen von **{inviterName}** (**{numInvites}** invites)\n```\n\n```text\n!config leaveMessage {memberName} hat den Server nach {joinedAt:duration} **verlassen**; Eingeladen von **{inviterName}**\n```",
+					"normalCodeVanity": "```text\n!config joinMessageVanity {memberMention} **joined** using the vanity invite code **{inviteCode}**\n```\n\n```text\n!config leaveMessageVanity {memberName} **left** after {joinedAt:duration} on this server\n```",
+					"joinMessageCode": "```text\n!config joinMessage { \"color\": \"#5cd65c\", \"author\": { \"name\": \"{memberName} ist beigetreten!\", \"icon_url\": \"{memberImage}\" }, \"fields\": [ { \"name\": \"Account erstellt\", \"value\": \"{memberCreated:timeAgo}\", \"inline\": true }, { \"name\": \"Erster Beitritt\", \"value\": \"{firstJoin:date}\", \"inline\": true }, { \"name\": \"Anzahl an Beitritten\", \"value\": \"{numJoins}\", \"inline\": true }, { \"name\": \"Eingeladen von\", \"value\": \"{inviterMention}\\n{numInvites} (regulär: {numRegularInvites}, bonus: {numBonusInvites}, gefälscht: {numFakeInvites}, verlassen: {numLeaveInvites})\" }, { \"name\": \"Einladungscode\", \"value\": \"{inviteCode} im Channel {channelMention}\" }, { \"name\": \"Anzahl an Mitgliedern\", \"value\": \"{memberCount}\" } ] }\n```",
+					"joinMessageCodeVanity": "```text\n!config joinMessageVanity { \"color\": \"#5cd65c\", \"author\": { \"name\": \"{memberName} joined!\", \"icon_url\": \"{memberImage}\" }, \"fields\": [ { \"name\": \"Account created\", \"value\": \"{memberCreated:timeAgo}\", \"inline\": true }, { \"name\": \"First joined\", \"value\": \"{firstJoin:date}\", \"inline\": true }, { \"name\": \"Number of joins\", \"value\": \"{numJoins}\", \"inline\": true }, { \"name\": \"Vanity Invite Code\", \"value\": \"{inviteCode}\" }, { \"name\": \"Total Member Count\", \"value\": \"{memberCount}\" } ] }\n```",
+					"leaveMessageCode": "```text\n!config leaveMessage { \"color\": \"#d65c5c\", \"author\": { \"name\": \"{memberName} hat den Server verlassen!\", \"icon_url\": \"{memberImage}\" }, \"fields\": [ { \"name\": \"Verbrachte Zeit\", \"value\": \"{joinedAt:duration}\", \"inline\": true }, { \"name\": \"Erster Beitritt\", \"value\": \"{firstJoin:date}\", \"inline\": true }, { \"name\": \"Anzahl an Beitritten\", \"value\": \"{numJoins}\", \"inline\": true }, { \"name\": \"Eingeladen von\", \"value\": \"{inviterMention}\\n{numInvites} (regulär: {numRegularInvites}, bonus: {numBonusInvites}, gefälscht: {numFakeInvites}, verlassen: {numLeaveInvites})\" }, { \"name\": \"Einladungscode\", \"value\": \"{inviteCode} im Channel {channelMention}\" }, { \"name\": \"Anzahl an Mitgliedern\", \"value\": \"{memberCount}\" } ] }\n```",
+					"leaveMessageCodeVanity": "```text\n!config leaveMessageVanity { \"color\": \"#d65c5c\", \"author\": { \"name\": \"{memberName} left!\", \"icon_url\": \"{memberImage}\" }, \"fields\": [ { \"name\": \"Time on server\", \"value\": \"{joinedAt:duration}\", \"inline\": true }, { \"name\": \"First joined\", \"value\": \"{firstJoin:date}\", \"inline\": true }, { \"name\": \"Number of joins\", \"value\": \"{numJoins}\", \"inline\": true }, { \"name\": \"Vanity Invite Code\", \"value\": \"{inviteCode}\" }, { \"name\": \"Total Member Count\", \"value\": \"{memberCount}\" } ] }\n```"
+				}
+			},
+			"overview": {
+				"title": "Übersicht"
+			},
+			"customMessages": {
+				"title": "Individuelle Nachricht",
+				"description": "Du kannst Beitritts- und Verlassensnachrichten mit unterschiedlichen Parametern anpassen.",
+				"placeholders": {
+					"title": {
+						"small": "platzhalter",
+						"large": "Platzhalter"
+					},
+					"jumpto": "Springe zu",
+					"yes": "ja",
+					"no": "nein",
+					"example": "beispiel",
+					"description": "beschreibung",
+					"descriptions": {
+						"memberName": "Der Name des Mitgliedes welcher gerade deinem Server beigetreten ist",
+						"memberId": "Die Discord ID des Mitgliedes welcher gerade deinem Server beigetreten ist",
+						"memberMention": "Die Erwähnung des Mitgliedes welcher gerade deinem Server beigetreten ist (Person wird angepingt)",
+						"memberFullName": "Der Benutzername und Diskriminator des Nutzers welcher gerade deinem Server beigetreten ist",
+						"memberImage": "Avatar URL des Mitgliedes",
+						"inviterName": "Der Name der Person, die jemanden eingeladen hat",
+						"inviterId": "Die Discord ID der Person, die jemanden eingeladen hat",
+						"inviterMention": "Die Erwähnung der Person, die jemanden eingeladen hat (Person wird angepingt)",
+						"inviterFullName": "Der Benutzername und Diskriminator der Person, die jemanden eingeladen hat",
+						"inviterImage": "Avatar URL der Person, die jemanden eingeladen hat",
+						"numInvites": "Gesamte Anzahl an Einladungen der Person, die jemanden eingeladen hat",
+						"numRegularInvites": "Anzahl an regulären Einladungen der Person, die jemanden eingeladen hat",
+						"numBonusInvites": "Anzahl an Bonuseinladungen der Person, die jemanden eingeladen hat (Wurden manuell zugewiesen)",
+						"numFakeInvites": "Anzahl an gefälschten Einladungen der Person, die jemanden eingeladen hat",
+						"numLeaveInvites": "Anzahl an Einladungen die entfernt wurden, weil das Mitglied den Server verlassen hat",
+						"memberCount": "Gesamte Anzahl an Mitgliedern deines Servers",
+						"numJoins": "Anzahl, wie oft ein Benutzer dem Server schon beigetreten ist",
+						"channelName": "Der Name des Channels wo der Einladungscode generiert wurde",
+						"channelMention": "Erwähnung des Channels wo der Einladungscode generiert wurde",
+						"inviteCode": "Benutzter Einladungscode",
+						"memberCreatedDate": "Das Datum an welchem der Discord Benutzer erstellt wurde",
+						"memberCreatedDuration": "Die Dauer seit der Discord Benutzer erstellt wurde",
+						"memberCreatedTimeAgo": "Die Zeit an dem der Discord Benutzer erstellt wurde",
+						"firstJoinDate": "Das Datum an welchem der Benutzer den Server zum ersten mal betreten hat",
+						"firstJoinDuration": "Die Dauer seitdem der Discord Benutzer den Server zum ersten mal betreten hat",
+						"firstJoinTimeAgo": "Die Zeit an dem der Benutzer den Server zum ersten mal betreten hat",
+						"previousJoinDate": "Das Datum an welchem der Benutzer das letzte mal den Server betreten hat",
+						"previousJoinDuration": "Die Dauer seitdem der Benutzer den Server das letzte mal betreten hat",
+						"previousJoinTimeAgo": "Die Zeit an dem der Benutzer das letzte mal den Server betreten hat",
+						"joinedAtDate": "Beitrittsdatum des Benutzers",
+						"joinedAtDuration": "Dauer seit des Beitrittes des Benutzers",
+						"joinedAtTimeAgo": "Zeit an dem der Benutzer beigetreten ist"
+					}
+				},
+				"content": "Du kannst eine eigene Beitritts- oder Verlassensnachricht einstellen in dem du die Konfiguration änderst:\n\n```\n!config joinMessage Dies ist deine eigene Beitrittsnachricht! Sie wird jedes mal verschickt wenn jemand dem Server beitritt.\n```\n\noder\n\n```\n!config leaveMessage Dies ist deine eigene Verlassensnachricht! Sie wird jedes mal verschickt wenn jemand den Server verlässt.\n```\n\nEine derartige Nachricht macht natürlich keinen sinn. Du solltest sie mit Informationen über das eingeladene Mitglied, die Person die denjenigen eingeladen hat oder den Server personalisieren. In der unten angegebenen Liste kannst du alle Platzhalter finden.\n\nWenn also eine Nachricht sagen soll\n\n`Willkommen @Andy! Du wurdest von Valandur eingeladen, welcher jetzt 3 Einladungen hat! Viel Spaß auf unserem Server!`\n\ndann können wir das ganz simpel erreichen indem wir alle Namen und Zahlen mit Platzhaltern ersetzen:\n\n`Willkommen {memberMention}! Du wurdest von {inviterName} eingeladen, welcher jetzt {numInvites} Einladungen hat! Viel Spaß auf unserem Server!`\n\nNun kannst du `!config joinMessage <message from above>` verwenden um die Konfiguration einzustellen. Unser Bot wird automatisch alle Platzhalter ersetzen wenn jemand beitritt.",
+				"premiumNote": "Premium Benutzer können eingebettete Beitritts- und Verlassensnachrichten verwenden. [Mehr Infos hier](./examples.md)",
+				"endingParagraph": "Bitte besuche die [Beispiele Seite](./examples.md) um herauszufinden welche Nachrichten du erstellen kannst!"
+			}
+		},
+		"moderation": {
+			"title": "Moderation",
+			"description": "Unser brandneues Moderationssystem ermöglicht es dir viele Dinge automatisch zu moderieren. Bitte schaue dir für weiteren Informationen unsere [Strikes]({{{ linkStrikes }}}) und [Bestrafungen]({{{ linkPunishments }}}) Seiten an. Kurz gesagt vergibt unser Bot 'Strikes' an Leute, die sich schlecht benehmen, und nach einer bestimmten Anzahl von Strikes erhält der User eine Bestrafung. All das ist durch den Benutzer konfigurierbar.",
+			"punishments": {
+				"title": "Bestrafungen",
+				"question": {
+					"first": "Was sind Bestrafungen?",
+					"second": "Wie kann ich einen Benutzer bestrafen nachdem er eine gewisse Anzahl an Strikes erreicht hat?"
+				},
+				"answer": {
+					"first": "Bestrafungen sind Aktionen wie `ban`, `kick` oder `mute` welche einem Benutzer gegeben werden wenn er Regeln bricht. Du kannst Benutzer entweder direkt über einen Befehl bestrafen, oder du kannst Bestrafungen definieren die nach einer gewissen Anzahl an Strikes automatisch vergeben werden.",
+					"second": "Mit dem `punishmentconfig` Befehl kannst du definieren wie viele Strikes eine Bestrafung geben soll.\n\n```text\n!punishmentconfig <punishmentType> <numberOfStrikesNeeded>\n```\n\nListe mit allen verfügbaren Bestrafungen:\n\n- ban\n- softban\n- kick\n- mute\n- warn\n\nWenn du also einen Benutzer nach 5 Strikes kicken möchtest, dann musst du folgenden Befehl verwenden\n\n```text\n!punishmentconfig kick 5\n```\n\nWenn du eine Bestrafung über `punishmentconfig` löschen möchtest, dann must du einfach die Strikes auf `0` setzen:\n\n```text\n!punishmentconfig kick 0\n```\n\nUm alle Bestrafungsoptionen zu sehen nutze nur den Befehl ohne ein Argument anzugeben:\n\n```text\n!punishmentconfig\n```"
+				}
+			},
+			"strikes": {
+				"title": "Strikes",
+				"question": {
+					"first": "Was sind Strikes?",
+					"second": "Was sind Verstöße?"
+				},
+				"answer": {
+					"first": "Strikes sind Punkte, welcher ein Benutzer für das verstoßen von Serverregeln erhält. Jedes mal wenn ein Benutzer einen Strike bekommt wird ihm eine direkte Nachricht zugesandt, in der steht wie viele Strikes er bekam und warum er diese bekommen hat. Wenn ein Benutzer eine bestimmte Anzahl an Strikes erreicht erhält er eine **Bestrafung**",
+					"second": "Verstöße sind Auto-Moderator-Regeln die du auf deinem Server aktivieren oder deaktivieren kannst. Aktuell existieren folgende Verstöße:\n\n- [invites](strikes.md#invites)\n- [links](strikes.md#links)\n- [words](strikes.md#words)\n- [allCaps](strikes.md#allcaps)\n- [duplicateText](strikes.md#duplicatetext)\n- [quickMessages](strikes.md#quickmessages)\n- [mentionUsers](strikes.md#mentionusers)\n- [mentionRoles](strikes.md#mentionroles)\n- [emojis](strikes.md#emojis)\n\nFür jede dieser Verstöße musst du festlegen wie viele Strikes vergeben werden, wenn jemand dagegen verstößt. Dies kannst du über den `strikeconfig` Befehl tun:\n\n```text\n!strikeconfig <violationType> <numberOfStrikes>\n```\n\nWenn du zum Beispiel Benutzern `2` Strikes geben willst, wenn sie gegen die `invites` Regel verstoßen, dann musst du diesen Befehl nutzen:\n\n```text\n!strikeconfig invites 2\n```\n\nDu kannst die aktuelle Konfiguration hiermit überprüfen:\n\n```text\n!strikeconfig\n```"
+				},
+				"violations": {
+					"title": "Detaillierte Liste mit Verstößen",
+					"invites": "Dieser Verstoß wird ausgelöst wenn ein Benutzer einen Link zu einem anderem Discord server sendet.\n\nBeispiel:\n\n`!strikeconfig invites 1`\n\nUm die Konfiguration wieder zu löschen, verwende:\n\n`!strikeconfig invites 0`\n\n**Konfigurationseinstellungen:**\n\n- [autoModInvitesEnabled](../../reference/settings?id=enabled-2)",
+					"links": "Dieser Verstoß wird ausgelöst wenn ein Benutzer einen Link sendet.\n\nBeispiel:\n\n`!strikeconfig links 1`\n\nUm die Konfiguration wieder zu löschen, verwende:\n\n`!strikeconfig links 0`\n\n**Konfigurationsoptionen:**\n\n- [autoModLinksEnabled](../../reference/settings?id=enabled-3)\n- [autoModLinksWhitelist](../../reference/settings?id=whitelist)\n- [autoModLinksBlacklist](../../reference/settings?id=blacklist)\n- [autoModLinksFollowRedirects](../../reference/settings?id=follow-redirects)",
+					"words": "Dieser Verstoß wird ausgelöst wenn ein Benutzer ein verbotenes Wort sendet.\n\nBeispiel:\n\n`!strikeconfig words 1`\n\nUm die Konfiguration wieder zu löschen, verwende:\n\n`!strikeconfig words 0`\n\n**Konfigurationsoptionen:**\n\n- [autoModWordsEnabled](../../reference/settings?id=enabled-4)\n- [autoModWordsBlacklist](../../reference/settings?id=blacklist-1)",
+					"allCaps": "Dieser Verstoß wird ausgelöst wenn ein Benutzer eine Nachricht sendet, die hauptsächlich GROß GESCHRIEBEN IST.\n\nBeispiel:\n\n`!strikeconfig allCaps 1`\n\nUm die Konfiguration wieder zu löschen, verwende:\n\n`!strikeconfig allCaps 0`\n\n**Konfigurationsoptionen:**\n\n- [autoModAllCapsEnabled](../../reference/settings?id=enabled-5)\n- [autoModAllCapsMinCharacters](../../reference/settings?id=min-characters)\n- [autoModAllCapsPercentageCaps](../../reference/settings?id=percentage-caps)",
+					"duplicateText": "Dieser Verstoß wird ausgelöst wenn ein Benutzer die selbe Nachricht mehrfach hintereinander sendet.\n\nBeispiel:\n\n`!strikeconfig duplicateText 1`\n\nUm die Konfiguration wieder zu löschen, verwende:\n\n`!strikeconfig duplicateText 0`\n\n**Konfigurationsoptionen:**\n\n- [autoModDuplicateTextEnabled](../../reference/settings?id=enabled-6)\n- [autoModDuplicateTextTimeframeInSeconds](../../reference/settings?id=timeframe-in-seconds)",
+					"quickMessages": "Dieser Verstoß wird ausgelöst wenn ein Benutzer schnell hintereinander Nachrichten sendet.\n\nBeispiel:\n\n`!strikeconfig quickMessages 1`\n\nUm die Konfiguration wieder zu löschen, verwende:\n\n`!strikeconfig quickMessages 0`\n\n**Konfigurationsoptionen:**\n\n- [autoModQuickMessagesEnabled](../../reference/settings?id=enabled-7)\n- [autoModQuickMessagesNumberOfMessages](../../reference/settings?id=-of-messages)\n- [autoModQuickMessagesTimeframeInSeconds](../../reference/settings?id=timeframe-in-seconds-1)",
+					"mentionUsers": "Dieser Verstoß wird ausgelöst wenn ein Benutzer mehrere Benutzer gleichzeitig erwähnt.\n\nBeispiel:\n\n`!strikeconfig mentionUsers 1`\n\nUm die Konfiguration wieder zu löschen, verwende:\n\n`!strikeconfig mentionUsers 0`\n\n**Konfigurationsoptionen:**\n\n- [autoModMentionUsersEnabled](../../reference/settings?id=enabled-8)\n- [autoModMentionUsersMaxNumberOfMentions](../../reference/settings?id=max-of-mentions)",
+					"mentionRoles": "Dieser Verstoß wird ausgelöst wenn ein Benutzer mehrere Rollen erwähnt.\n\nBeispiel:\n\n`!strikeconfig mentionRoles 1`\n\nUm die Konfiguration wieder zu löschen, verwende:\n\n`!strikeconfig mentionRoles 0`\n\n**Konfigurationsoptionen:**\n\n- [autoModMentionRolesEnabled](../../reference/settings?id=enabled-9)\n- [autoModMentionRolesMaxNumberOfMentions](../../reference/settings?id=max-of-mentions-1)",
+					"emojis": "Dieser Verstoß wird ausgelöst wenn ein Benutzer mehrere Emojis versendet.\n\nBeispiel:\n\n`!strikeconfig emojis 1`\n\nUm die Konfiguration wieder zu löschen, verwende:\n\n`!strikeconfig emojis 0`\n\n**Konfigurationsoptionen:**\n\n- [autoModEmojisEnabled](../../reference/settings?id=enabled-10)\n- [autoModEmojisMaxNumberOfEmojis](../../reference/settings?id=max-of-emojis)"
+				}
+			}
+		},
+		"music": {
+			"title": "Musik",
+			"overview": {
+				"title": "Übersicht",
+				"description": "Musik Features sind aktuell deaktiviert. Aktuell ist nicht geplant sie wieder zu reaktivieren."
+			}
+		}
+	},
+	"other": {
+		"title": "Sonstiges",
+		"donating": {
+			"title": "Spenden",
+			"description": "Momentan akzeptieren wir keine Spenden.",
+			"crypto": {
+				"title": "Crypto",
+				"description": "Momentan akzeptieren wir keinen Spenden über Crypto."
+			}
+		},
+		"roadmap": {
+			"title": "Roadmap"
+		},
+		"support": {
+			"title": "Support",
+			"description": "Für weitere Unterstützung bitte lese unsere [Häufig gestellten Fragen (FAQ)]({{{ faqLink }}}).\n\nWenn du dort keine Antwort auf deine Frage findest dann komm auf unseren [Discord server]({{{ discordInvite }}}), im [#faq Channel]({{{ faqChannelLink }}}) findest du mehr Fragen und Antworten als auf der Website.\n\nAnsonsten kannst du in unserem [#support Channel]({{{ supportChannelLink }}}) nach deiner Frage schauen. Hier kannst du ebenfalls menschliche Unterstützung anfordern indem du Option `6` auswählst\n(**Bitte fordere nur menschliche Unterstützung an nachdem du die FAQs gelesen hast!**)"
+		},
+		"translations": {
+			"title": "Übersetzungen",
+			"description": "InviteManager benötigt die Community um in verschiedene Sprachen übersetzt werden zu können. Deine Hilfe ist mehr als willkommen, bitte besuche den unten stehenden Link wenn du uns unterstützen möchtest.",
+			"help": {
+				"title": "Hilf beim übersetzen",
+				"description": "Wenn du helfen möchtest den Bot oder die Dokumentation zu übersetzen, komm bitte auf unseren [Discord server]({{{ discordLink }}}) damit wir dich zu unserer [Transifex organization]({{{ transifexLink }}}) einladen können."
+			}
+		},
+		"webpanel": {
+			"title": "Webpanel",
+			"description": "Aktuell ist nicht geplant ein Webpanel zu releasen."
+		},
+		"changelog": {
+			"title": "Changelog"
+		},
+		"openSource": {
+			"title": "Open Source",
+			"description": "InviteManager ist Open Source und offen für jede Unterstützung.",
+			"bot": {
+				"title": "Haupt Bot",
+				"description": "Wenn du uns unterstützen möchtest, oder du deinen eigenen Bot erstellen willst, besuche unser [Github Repository]({{{ link }}})"
+			}
+		}
+	},
+	"start": {
+		"title": "Erste Schritte",
+		"description": "Um zu beginnen, führe einfach den Befehl `!setup` auf deinem Server aus.",
+		"alpha": {
+			"title": "Alpha Bot",
+			"intro": "Der `InviteManager Alpha` Bot ist der Bot, den wir zum Testen neuer Funktionen verwenden. Die neuen Funktionen auf dem Alpha Bot werden nicht immer stabil sein, aber wenn du diesen Bot benutzt, wirst du der erste sein, der diese sieht und kannst uns Feedback geben, wie wir diese verbessern können, bevor sie in den Main Bot aufgenommen werden.",
+			"linkDescription": "Lade den InviteManager Alpha hier auf deinem Server ein",
+			"disabled": "Deaktiviert"
+		},
+		"faq": {
+			"title": "FAQ",
+			"prefix": {
+				"title": "Wie ändere ich den Prefix des Bots?",
+				"description": "Du kannst `!config prefix -` ausführen, um den Prefix zu ändern.\n\nWenn du deinen aktuellen Prefix nicht kennst, kannst du `@InviteManager config prefix` ausführen, um den Prefix zu sehen."
+			},
+			"joinLeaveChannel": {
+				"title": "Wie stelle ich Join und Leave Nachrichten ein?",
+				"description": "Stelle den Channel mit folgendem Command\n\n`!config joinMessageChannel #channel`\n\noder\n\n`!config leaveMessageChannel #channel` ein.\n\nDanach werden neue Join und Leave Nachrichten in diesem Channel gepostet."
+			},
+			"joinLeaveMessage": {
+				"title": "Kann ich die Join und Leave Nachrichten verändern?",
+				"description": "Allerdings! Du kannst die Nachricht ändern folgendermaßen individualisieren:\n\n`!config joinMessage {memberMention} *ist beigetreten**; Eingeladen von **{inviterName}** (**{numInvites}** invites)`\n\noder\n\n`!config leaveMessage {memberName} **hat den Server verlassen**; Eingeladen von **{inviterName}**`.\n\nEs sind viele Platzhalter verfügbar. Du kannst die vollständige Liste auf der Seite '[Individuelle Nachrichten]({{{ link }}})' sehen."
+			},
+			"ranks": {
+				"title": "Was sind 'Ränge' und wie kann ich sie benutzen?",
+				"description": "Ränge werden verwendet um Benutzern rollen zuzuweisen, wenn diese eine gewisse Anzahl an Einladungen erreicht haben. Wenn du zum Beispiel eine Rolle namens `@Anfänger` hast und du willst, dass Benutzer mit 5 oder mehr Einladungen diese Rolle bekommen, dann musst du mit `!add-rank @Anfänger 5 (Und fallst du willst, mit einer Beschreibung hier)` den Rang erstellen. Sobald jemand 5 Einladungen erreicht wird ihm automatisch die Rolle zugewiesen."
+			},
+			"channel": {
+				"title": "Wie kann ich den Bot in allen bis auf einen oder einige Channel deaktivieren?",
+				"description": "Nimm dem Bot die Rechte zum Lesen von Nachrichten in den Channeln, in denen der Bot nicht antworten soll, weg."
+			},
+			"limitations": {
+				"title": "Einschränkung: Kein Tracking bevor der Bot beigetreten ist",
+				"description": "Das Tracking (wer wen eingeladen hat) funktioniert nur, nachdem du den Bot eingeladen hast. Der Bot weiß auch nach der Einladung noch von jedem die Anzahl der Einladungen, keine Sorge. Nur die zusätzlichen Informationen fehlen und können nur für die Mitglieder gesammelt werden, die erst nach der Einladung des Bots beitreten."
+			},
+			"patreon": {
+				"title": "start.faq.patreon.title",
+				"description": "start.faq.patreon.description"
+			},
+			"bonusinvites": {
+				"title": "start.faq.bonusinvites.title",
+				"description": "start.faq.bonusinvites.description"
+			},
+			"language": {
+				"title": "start.faq.language.title",
+				"description": "start.faq.language.description"
+			},
+			"premiumbot": {
+				"title": "start.faq.premiumbot.title",
+				"description": "start.faq.premiumbot.description"
+			},
+			"leaderboard": {
+				"title": "start.faq.leaderboard.title",
+				"description": "start.faq.leaderboard.description"
+			},
+			"clearinvites": {
+				"title": "start.faq.clearinvites.title",
+				"description": "start.faq.clearinvites.description"
+			}
+		},
+		"pro": {
+			"title": "Pro Bot",
+			"description": "Aktuell gibt es keinen Pro Bot. Alle Pro Features sind in den regulären Bots ebenfalls verfügbar."
+		},
+		"quick": {
+			"title": "Start",
+			"setup": {
+				"title": "Einrichtung",
+				"description": "Um zu beginnen lade einen unserer Bots ein. Diese findest du auf der [Unsere Bots-Seite](./our-bots)\n\nDanach solltest du sicherstellen, dass der Bot `Lese Nachrichten` und `Schreibe Nachrichten`-Rechte in einem Channel besitzt, dann kannst du den `!setup` Befehl verwenden.\n\nDer Setup Befehl wird dir anzeigen ob dem Bot noch benötigte Rechte fehlen.",
+				"first": {
+					"title": "Erste Schritte",
+					"description": "Nachdem du den Bot eingeladen und Rechte eingestellt hast willst du vermutlich Beitritts- und Verlassensnachrichten konfigurieren. Hierfür besuche bitte unsere [Häufig gestellten Fragen (FAQs)](./faq)"
+				}
+			}
+		},
+		"ourBots": {
+			"title": "Unsere Bots",
+			"subtitle": "Lade den Bot ein",
+			"description": "Diese Version von InviteManager hat zwei identische Bots welche permanent laufen. Beide sind wirklich __**komplett identisch**__, abgesehen von deren Avatar.\n\n**Lade den blauen Bot ein:**\n{{{ blueBotLink }}}\n\n**Lade den gelben Bot ein:**\n{{{ yellowBotLink }}}"
+		}
+	},
+	"reference": {
+		"title": "Verweise",
+		"commands": {
+			"title": "Befehle"
+		},
+		"settings": {
+			"title": "Konfigurationen / Einstellungen"
+		}
+	},
+	"premium": {
+		"title": "Premium",
+		"description": "Aktuell bieten wir keine bezahlte Version unseres Bots an. Beide Bots die unter [Unsere Bots]({{{ ourBotsLink }}}) gelistet sind haben bereits alle Premium Features freigeschalten.",
+		"features": {
+			"title": "Features",
+			"first": "Eingebettete Beitritts- und Verlassensnachrichten",
+			"second": "Die Bestenliste wird alle 5 Minuten aktualisiert"
+		},
+		"tiers": {
+			"title": "Stufen"
+		},
+		"setup": {
+			"title": "Einrichtung"
+		}
+	}
+}
