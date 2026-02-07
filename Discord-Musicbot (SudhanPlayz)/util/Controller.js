@@ -12,7 +12,7 @@ module.exports = async (client, interaction) => {
 	if (!player) {
 		await interaction.reply({
 			embeds: [
-				client.Embed("❌ | **There is no player to control in this server.**"),
+				client.Embed("❌ | **Ezen a szerveren nincs irányítható lejátszó.**"),
 			],
 		});
 		setTimeout(() => {
@@ -24,7 +24,7 @@ module.exports = async (client, interaction) => {
 		const joinEmbed = new MessageEmbed()
 			.setColor(client.config.embedColor)
 			.setDescription(
-				"❌ | **You must be in a voice channel to use this action!**",
+				"❌ | **Ehhez a művelethez hangcsatornán kell lennie!**",
 			);
 		return interaction.reply({ embeds: [joinEmbed], ephemeral: true });
 	}
@@ -36,7 +36,7 @@ module.exports = async (client, interaction) => {
 		const sameEmbed = new MessageEmbed()
 			.setColor(client.config.embedColor)
 			.setDescription(
-				"❌ | **You must be in the same voice channel as me to use this action!**",
+				"❌ | *Ahhoz, hogy ezt a műveletet használhassa, ugyanazon a hangcsatornán kell lennie, mint én!***",
 			);
 		return await interaction.reply({ embeds: [sameEmbed], ephemeral: true });
 	}
@@ -45,11 +45,11 @@ module.exports = async (client, interaction) => {
 		player.queue.clear();
 		player.stop();
 		player.set("autoQueue", false);
-		client.warn(`Player: ${ player.options.guild } | Successfully stopped the player`);
+		client.warn(`Lejátszó: ${ player.options.guild } | Sikeresen leállítva a lejátszó gombbal.`);
 		const msg = await interaction.channel.send({
 			embeds: [
 				client.Embed(
-					"⏹️ | **Successfully stopped the player**",
+					"⏹️ | **Sikeresen megállítva a lejátszót**",
 				),
 			],
 		});
@@ -77,7 +77,7 @@ module.exports = async (client, interaction) => {
 			embeds: [
 				new MessageEmbed()
 					.setColor("RED")
-					.setDescription(`There is no previous song played.`),
+					.setDescription(`Nincsen előzőleg zene játszva.`),
 			],
 		});
     }

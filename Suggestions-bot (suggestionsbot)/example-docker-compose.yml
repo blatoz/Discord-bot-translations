@@ -1,0 +1,64 @@
+services:
+  suggestions_redis:
+    image: redis:7.4-alpine
+    container_name: "suggestions_redis"
+    ports:
+      - '3001:3001'
+    command: redis-server --port 3001 --save 20 1 --loglevel warning --requirepass haziness-sloppy-cycle-deduct-superman-undertook
+    volumes:
+      - cache:/data
+  suggestions_bot_cluster_1:
+    container_name: "suggestions_bot_cluster_1"
+    image: docker.pkg.github.com/suggestionsbot/suggestions-bot-rewrite/suggestions-bot-rewrite:latest
+    depends_on:
+      - suggestions_redis
+    build:
+      dockerfile: Dockerfile
+      context: .
+    environment:
+      PROD: 1
+      CLUSTER: 1
+      TOKEN: ...
+      MONGO_URL: ...
+      UPTIME_PATCH: ...
+      SUGGESTIONS_API_KEY: ...
+      SUGGESTIONS_STATS_API_URL: ....
+  suggestions_bot_cluster_2:
+    container_name: "suggestions_bot_cluster_2"
+    environment:
+      CLUSTER: 2
+      UPTIME_PATCH: ...
+    extends:
+      service: suggestions_bot_cluster_1
+  suggestions_bot_cluster_3:
+    container_name: "suggestions_bot_cluster_3"
+    environment:
+      CLUSTER: 3
+      UPTIME_PATCH: ...
+    extends:
+      service: suggestions_bot_cluster_1
+  suggestions_bot_cluster_4:
+    container_name: "suggestions_bot_cluster_4"
+    environment:
+      CLUSTER: 4
+      UPTIME_PATCH: ...
+    extends:
+      service: suggestions_bot_cluster_1
+  suggestions_bot_cluster_5:
+    container_name: "suggestions_bot_cluster_5"
+    environment:
+      CLUSTER: 5
+      UPTIME_PATCH: ...
+    extends:
+      service: suggestions_bot_cluster_1
+  suggestions_bot_cluster_6:
+    container_name: "suggestions_bot_cluster_6"
+    environment:
+      CLUSTER: 6
+      UPTIME_PATCH: ...
+    extends:
+      service: suggestions_bot_cluster_1
+
+volumes:
+  cache:
+    driver: local

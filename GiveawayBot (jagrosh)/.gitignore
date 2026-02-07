@@ -1,0 +1,11 @@
+*.txt
+*.jar
+*.sh
+nb*.xml
+/live/
+/test/
+/backup/
+/target/
+/src/main/resources/static/
+/src/main/resources/templates
+/nbproject/
