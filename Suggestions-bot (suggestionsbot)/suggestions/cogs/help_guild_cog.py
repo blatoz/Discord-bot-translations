@@ -103,7 +103,7 @@ class HelpGuildCog(commands.Cog):
     async def error_information(
         self,
         interaction: disnake.GuildCommandInteraction,
-        error_id: str = commands.Param(description="The error id"),
+        error_id: str = commands.Param(description="A hiba id"),
     ):
         """Retrieve information about a given error."""
         error: Optional[Error] = await self.bot.db.error_tracking.find(
@@ -111,18 +111,18 @@ class HelpGuildCog(commands.Cog):
         )
         if not error:
             return await interaction.send(
-                "No error exists with that ID.", ephemeral=True
+                "Nincsen ilyen hiba ezzel az ID-val.", ephemeral=True
             )
 
         embed = disnake.Embed(
             colour=self.bot.colors.embed_color,
             timestamp=self.bot.state.now,
-            title=f"Information for error {error.id}",
-            description=f"**Command name**: `{error.command_name}`\n\n"
+            title=f"Információ a Hibáról: {error.id}",
+            description=f"**Parancs Neve**: `{error.command_name}`\n\n"
             f"**Shard ID**: `{error.shard_id}` | **Cluster ID**: `{error.cluster_id}`\n"
-            f"**User ID**: `{error.user_id}` | **Guild ID**: `{error.guild_id}`\n\n"
-            f"**Error**: `{error.error}`\n"
-            f"**Error occurred**: `{naturaldate(error.created_at)}` ({format_dt(error.created_at, style='F')})",
+            f"**Felhasználó ID**: `{error.user_id}` | **Szerver ID**: `{error.guild_id}`\n\n"
+            f"**Hiba**: `{error.error}`\n"
+            f"**Hiba Megtörtént Ekkor**: `{naturaldate(error.created_at)}` ({format_dt(error.created_at, style='F')})",
         )
         await interaction.send(
             embed=embed,
