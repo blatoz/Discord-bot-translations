@@ -125,6 +125,6 @@ export default class YouTubePlaylist {
     }
 
     getFormattedUrl() {
-        return hyperlink(this.#id, this.getUrl(), 'YouTube playlist ID');
+        return hyperlink(this.#id, this.getUrl(), 'YouTube Lejátszólista ID');
     }
 }
