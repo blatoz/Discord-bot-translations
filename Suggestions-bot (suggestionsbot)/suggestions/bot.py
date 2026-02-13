@@ -192,10 +192,10 @@ class SuggestionsBot(commands.AutoShardedInteractionBot):
 
         self._has_dispatched_initial_ready = True
         self._initial_ready_future.set_result(None)
-        log.info("Suggestions main: Ready")
-        log.info("Startup took: %s", self.get_uptime())
-        print("Suggestions main: Ready")
-        print(f"Startup took: {self.get_uptime()}")
+        log.info("Suggestions main: Készen áll")
+        log.info("Elindulás tartott eddig: %s", self.get_uptime())
+        print("Suggestions main: Készen áll")
+        print(f"Elindulás tartott eddig: {self.get_uptime()}")
         await self.suggestion_emojis.populate_emojis()
 
     @property
@@ -239,22 +239,22 @@ class SuggestionsBot(commands.AutoShardedInteractionBot):
             timestamp=self.state.now,
         )
         if footer_text and error_code:
-            raise ValueError("Can't provide both footer_text and error_code")
+            raise ValueError("Nem lehet mind a footer_text, mind az error_code megadni.")
         elif footer_text:
             embed.set_footer(text=footer_text)
         elif error_code:
             if error:
                 embed.set_footer(
-                    text=f"Error code {error_code.value} | Error ID {error.id}"
+                    text=f"Hiba kód {error_code.value} | Hiba ID {error.id}"
                 )
             else:
                 embed.set_footer(
-                    text=f"Error code {error_code.value} | Cluster ID {self.cluster_id}"
+                    text=f"Hiba kód {error_code.value} | Cluster ID {self.cluster_id}"
                 )
 
-            log.debug("Encountered %s", error_code.name)
+            log.debug("Találkozva %s", error_code.name)
         elif error:
-            embed.set_footer(text=f"Error ID {error.id}")
+            embed.set_footer(text=f"Hiba ID {error.id}")
 
         return embed
 
@@ -353,7 +353,7 @@ class SuggestionsBot(commands.AutoShardedInteractionBot):
 
             if isinstance(exception, UnhandledError):
                 log.critical(
-                    "An unhandled exception occurred",
+                    "Egy unhandled exception történt",
                     extra={
                         "error.id": error.id,
                         "interaction.author.id": error.user_id,
@@ -364,8 +364,8 @@ class SuggestionsBot(commands.AutoShardedInteractionBot):
                 )
                 return await interaction.send(
                     embed=self.error_embed(
-                        "Something went wrong",
-                        f"Please contact support.",
+                        "Valami nem jól sült el",
+                        f"Kérlek ved fől a kapcsolatot a supporttal..",
                         error_code=ErrorCode.UNHANDLED_ERROR,
                         error=error,
                     ),
@@ -394,8 +394,8 @@ class SuggestionsBot(commands.AutoShardedInteractionBot):
                 )
                 return await interaction.send(
                     embed=self.error_embed(
-                        "Configuration Error",
-                        "I do not have permission to use your guilds configured suggestions channel.",
+                        "Konfigurációs Hiba",
+                        "Nincs engedélyem a szerveren konfigurált javaslatcsatornájának használatára.",
                         error_code=attempt_code.value,
                         error=error,
                     ),
@@ -414,8 +414,8 @@ class SuggestionsBot(commands.AutoShardedInteractionBot):
                 )
                 return await interaction.send(
                     embed=self.error_embed(
-                        "Configuration Error",
-                        "I do not have permission to use your guilds configured logs channel.",
+                        "Konfigrációs Hiba",
+                        "Nincs engedélyem a szerveren konfigurált naplócsatornájának használatára.",
                         error_code=attempt_code,
                         error=error,
                     ),
