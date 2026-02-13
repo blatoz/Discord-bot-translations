@@ -12,6 +12,6 @@ export default class PurgeFilter {
      * @returns {boolean}
      */
     matches(message) {
-        throw new Error('Not implemented');
+        throw new Error('Nincsen implomentálva');
     }
 }
