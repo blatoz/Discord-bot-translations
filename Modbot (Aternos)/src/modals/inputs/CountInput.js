@@ -5,7 +5,7 @@ export default class CountInput extends TextInput {
     constructor() {
         super();
         this.setRequired(false)
-            .setLabel('Count')
+            .setLabel('Mennyiség')
             .setCustomId('count')
             .setStyle(TextInputStyle.Short)
             .setPlaceholder('1');
