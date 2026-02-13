@@ -84,7 +84,7 @@ class InteractionHandler:
             data["components"] = components
 
         if not data:
-            raise ValueError("Expected at-least one value to send.")
+            raise ValueError("Legalább egy érték elküldése várható.")
 
         value = await self.interaction.send(ephemeral=self.ephemeral, **data)
         self.has_sent_something = True
@@ -105,7 +105,7 @@ class InteractionHandler:
 
         if requires_premium and not instance.has_premium:
             await interaction.response.require_premium()
-            raise ErrorHandled("Interaction requires premium.")
+            raise ErrorHandled("Interakcióhoz prémium kell hozzá.")
 
         if not i_just_want_an_instance:
             # TODO Remove this once BT-10 is resolved
