@@ -5,7 +5,7 @@ export default class DeleteMessageHistoryInput extends TextInput {
     constructor() {
         super();
         this.setRequired(false)
-            .setLabel('Delete message history')
+            .setLabel('Üzenet törlése')
             .setCustomId('delete')
             .setStyle(TextInputStyle.Short)
             .setValue('1 hour');
