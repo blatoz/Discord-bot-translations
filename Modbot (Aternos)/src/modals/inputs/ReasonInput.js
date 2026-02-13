@@ -5,9 +5,9 @@ export default class ReasonInput extends TextInput {
     constructor() {
         super();
         this.setRequired(false)
-            .setLabel('Reason')
+            .setLabel('Indok')
             .setCustomId('reason')
             .setStyle(TextInputStyle.Paragraph)
-            .setPlaceholder('No reason provided');
+            .setPlaceholder('Nincsen indok megadva.');
     }
 }
