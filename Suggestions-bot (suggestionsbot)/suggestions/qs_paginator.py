@@ -53,7 +53,7 @@ class QueuedSuggestionsPaginator:
 
         if self.total_pages == 0:
             return await self.original_interaction.edit_original_message(
-                embeds=[], components=[], content="No more suggestions in queue."
+                embeds=[], components=[], content="Nincsen több javaslat a várólistán."
             )
 
         await self.original_interaction.edit_original_message(
@@ -89,11 +89,11 @@ class QueuedSuggestionsPaginator:
         else:
             embed: disnake.Embed = await suggestion.as_embed(self.bot)
             if suggestion.is_anonymous:
-                embed.set_footer(text=f"Page {self.current_page}/{self.total_pages}")
+                embed.set_footer(text=f"Oldal {self.current_page}/{self.total_pages}")
             else:
                 embed.set_footer(
-                    text=f"Submitter ID: {suggestion.suggestion_author_id} | "
-                    f"Page {self.current_page}/{self.total_pages}"
+                    text=f"Beküldő ID: {suggestion.suggestion_author_id} | "
+                    f"Oldal {self.current_page}/{self.total_pages}"
                 )
 
             return embed
