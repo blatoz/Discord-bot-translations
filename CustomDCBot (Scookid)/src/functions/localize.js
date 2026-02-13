@@ -33,7 +33,7 @@ function localize(file, string, replace = {}) {
     if (!locals[client.locale][file]) locals[client.locale][file] = {};
     let rs = locals[client.locale][file][string];
     if (!rs) rs = locals['en'][file][string];
-    if (!rs) throw new Error(`String ${file}/${string} not found`);
+    if (!rs) throw new Error(`String ${file}/${string} nem található`);
     for (const key in replace) {
         rs = rs.replaceAll(`%${key}`, replace[key]);
     }
