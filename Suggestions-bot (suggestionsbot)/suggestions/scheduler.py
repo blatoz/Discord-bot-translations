@@ -20,13 +20,13 @@ async def exception_aware_scheduler(
             )
             for task in done:
                 if task.exception() is not None:
-                    log.error("Task exited with exception:")
+                    log.error("Task kilépett ezzel a exception-nel:")
                     task.print_stack()
 
             await asyncio.sleep(sleep_between_tries)
 
         log.debug(
-            "exception_aware_scheduler for %s has run out of retries", str(caller)
+            "exception_aware_scheduler %s ki futtot az újra probálkozások.", str(caller)
         )
 
     asyncio.create_task(inner_task(callee, *args, **kwargs))
