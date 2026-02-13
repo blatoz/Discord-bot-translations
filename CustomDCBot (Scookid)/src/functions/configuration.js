@@ -33,12 +33,12 @@ async function loadAllConfigs(client) {
             await checkModuleConfig(moduleName, client.modules[moduleName]['config']['on-checked-config-event'] ? require(`./modules/${moduleName}/${client.modules[moduleName]['config']['on-checked-config-event']}`) : null)
                 .catch(async (e) => {
                     client.modules[moduleName].enabled = false;
-                    client.logger.error(`[CONFIGURATION] ERROR CHECKING ${moduleName}. Module disabled internally. Error: ${e}`);
+                    client.logger.error(`[CONFIGURATION] HIBA CHECKELÉS ${moduleName}. Modul belsőleg letiltva. Hiba: ${e}`);
                     if (client.scnxSetup) await require('./scnx-integration').reportIssue(client, {
                         type: 'MODULE_FAILURE',
                         errorDescription: 'module_disabled',
                         module: moduleName,
-                        errorData: {reason: 'Invalid configuration: ' + e}
+                        errorData: {reason: 'Érvénytelen konfiguráció: ' + e}
                     });
                 });
         }
@@ -64,8 +64,8 @@ async function checkConfigFile(file, moduleName) {
         try {
             exampleFile = require(builtIn ? `${__dirname}/../../config-generator/${file}` : `${__dirname}/../../modules/${moduleName}/${file}`);
         } catch (e) {
-            logger.error(`Not found config example file: ${file}`);
-            return reject(`Not found config example file: ${file}`);
+            logger.error(`Nem található konfigurációs példafájl: ${file}`);
+            return reject(`Nem található konfigurációs példafájl: ${file}`);
         }
         if (!exampleFile) return;
         let forceOverwrite = false;
@@ -86,7 +86,7 @@ async function checkConfigFile(file, moduleName) {
         if (exampleFile.skipContentCheck) newConfig = configData;
         else if (exampleFile.configElements) {
             if (!Array.isArray(configData)) {
-                client.logger.warn(`${builtIn ? '' : '/' + moduleName}/${exampleFile.filename}: This file should be a config-element, but is not. Converting to config-element.`);
+                client.logger.warn(`${builtIn ? '' : '/' + moduleName}/${exampleFile.filename}: Ez a fájl config-elemnek kellene lennie, de nem az. Átalakítás config-elemre.`);
                 if (typeof configData === 'object') configData = [configData];
                 else configData = [];
             }
@@ -141,7 +141,7 @@ async function checkConfigFile(file, moduleName) {
                     console.log(field.default);
                     return rej('Missing default value on ' + field.name);
                 }
-                if (typeof field.default !== 'object') return rej(`${field.name} has an invalid default value. The default value needs to be localized. A possible fix could be: default = "${JSON.stringify({en: field.default})}". If you want a default value for all languages, only set the "en" key.`);
+                if (typeof field.default !== 'object') return rej(`${field.name} érvénytelen alapértelmezett értéke van. Az alapértelmezett értéket lokalizálni kell. Lehetséges megoldás lehet: default = "${JSON.stringify({en: field.default})}". Ha minden nyelvhez alapértelmezett értéket szeretne, csak az „en” kulcsot állítsa be.`);
                 field.default = field.default[client.locale] || field.default['en'];
                 if (typeof fieldValue === 'undefined') {
                     fieldValue = field.default;
@@ -283,7 +283,7 @@ async function checkType(type, value, contentFormat = null, allowEmbed = false) 
             if (client.guilds.cache.find(g => g.id === client.guildID)) {
                 return true;
             } else {
-                logger.error(`Guild with ID "${value}" could not be found - have you invited the bot?`);
+                logger.error(`Szerver ezzel az ID-val "${value}" nem található - meghívtad a botot?`);
                 return false;
             }
         case 'keyed':
@@ -301,7 +301,7 @@ async function checkType(type, value, contentFormat = null, allowEmbed = false) 
         case 'boolean':
             return typeof value === 'boolean';
         default:
-            logger.error(`Unknown type: ${type}`);
+            logger.error(`Ismeretlen típus: ${type}`);
             process.exit(1);
     }
 }
