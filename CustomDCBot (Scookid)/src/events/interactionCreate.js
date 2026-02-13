@@ -72,9 +72,9 @@ module.exports.run = async (client, interaction) => {
     try {
         if (command.options.filter(c => c.type === 'SUB_COMMAND').length === 0) return await command.run(interaction);
         if (!command.subcommands) {
-            interaction.client.logger.error(`Command ${interaction.commandName} has subcommands but does not use the subcommands handler (required).`);
+            interaction.client.logger.error(`Parancs ${interaction.commandName} vannak neki al paranccsai de nincsen alparancs kezelője (kötelező).`);
             return interaction.reply({
-                content: '⚠️ This command is not configured correctly and can not be executed, please contact the developer.',
+                content: '⚠️ Ez a parancs nincsen jól konfigurálva, szólj a fejlesztőnek.',
                 ephemeral: true
             });
         }
