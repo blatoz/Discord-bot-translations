@@ -5,9 +5,9 @@ export default class CommentInput extends TextInput {
     constructor() {
         super();
         this.setRequired(false)
-            .setLabel('Comment')
+            .setLabel('Komment')
             .setCustomId('comment')
             .setStyle(TextInputStyle.Paragraph)
-            .setPlaceholder('No comment provided');
+            .setPlaceholder('Nincsen komment megadva');
     }
 }
