@@ -23,23 +23,23 @@ class Colors:
             1,
             [
                 [
-                    "Error",
+                    "Hiba",
                     cls.error,
                 ],
                 [
-                    "Beta Required",
+                    "Béta Kell",
                     cls.beta_required,
                 ],
                 [
-                    "Pending Suggestion",
+                    "Folyatmatban Lévő Javaslat",
                     cls.pending_suggestion,
                 ],
                 [
-                    "Approved Suggestion",
+                    "Elfogadott Javaslat",
                     cls.approved_suggestion,
                 ],
                 [
-                    "Rejected Suggestion",
+                    "Elutasított Javaslat",
                     cls.rejected_suggestion,
                 ],
             ],
@@ -49,7 +49,7 @@ class Colors:
             color: disnake.Color = items[1]
             description = f"{items[0]}\nRGB: {color.r},{color.g},{color.b}"
             return disnake.Embed(
-                title="Bot color palette", description=description, color=items[1]
+                title="Bot Szín Paletta", description=description, color=items[1]
             )
 
         paginator.format_page = format_page
