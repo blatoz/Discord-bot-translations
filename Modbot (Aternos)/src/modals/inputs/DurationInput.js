@@ -5,7 +5,7 @@ export default class DurationInput extends TextInput {
     constructor() {
         super();
         this.setRequired(false)
-            .setLabel('Duration')
+            .setLabel('Időtartam')
             .setCustomId('duration')
             .setStyle(TextInputStyle.Short);
     }
