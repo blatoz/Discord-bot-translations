@@ -45,7 +45,7 @@ async def create_bot(database_wrapper=None) -> SuggestionsBot:
             "cluster": cluster_id,
             "shard_ids": shard_ids,
         }
-        log.info("Cluster %s - Handling shards %s", cluster_id, shard_ids)
+        log.info("Cluster %s - Kezel shardot: %s", cluster_id, shard_ids)
     else:
         cluster_kwargs = {}
 
@@ -97,16 +97,16 @@ async def create_bot(database_wrapper=None) -> SuggestionsBot:
         else:
             guilds: int = await bot.stats.fetch_approximate_global_guild_count()
 
-        embed.add_field(name="Guilds", value=guilds)
-        embed.add_field(name="Total shards", value=bot.total_shards)
+        embed.add_field(name="Szerverek", value=guilds)
+        embed.add_field(name="Összes Shard", value=bot.total_shards)
         embed.add_field(name="Cluster Uptime", value=bot.get_uptime())
         embed.add_field(name="Disnake", value=disnake.__version__)
         embed.add_field(name="Python", value=python_version)
-        embed.add_field(name="Version", value=bot.version)
+        embed.add_field(name="Verzió", value=bot.version)
         embed.set_footer(text=f"Cluster {bot.cluster_id} - Shard {shard_id}")
 
         await interaction.send(embed=embed, ephemeral=False)
-        log.debug("User %s viewed stats", interaction.author.id)
+        log.debug("Felhasználó %s megnézete a statokat", interaction.author.id)
         await bot.stats.log_stats(
             interaction.author.id,
             interaction.guild_id,
@@ -134,8 +134,8 @@ async def create_bot(database_wrapper=None) -> SuggestionsBot:
             shard = bot.get_shard(shard_id)
             latency = shard.latency
             return await interaction.send(
-                f"**Guild ID:** `{interaction.guild_id}`\n"
-                f"**Average cluster latency:** `{round(bot.latency, 2)}ms`\n"
+                f"**Szerver ID:** `{interaction.guild_id}`\n"
+                f"**Átlagos Cluster Válaszidő:** `{round(bot.latency, 2)}ms`\n"
                 f"**Cluster {bot.cluster_id} - Shard {shard_id}:** `{round(latency, 2)}ms`"
             )
 
@@ -148,17 +148,17 @@ async def create_bot(database_wrapper=None) -> SuggestionsBot:
             colour=bot.colors.embed_color,
             timestamp=bot.state.now,
         )
-        embed.add_field("Bot Author(s)", "Anthony, Ethan (Skelmis)")
-        embed.add_field("Website", f"[suggestions.gg]({base_site})")
+        embed.add_field("Bot Készítő(i)", "Anthony, Ethan (Skelmis)")
+        embed.add_field("Weboldal", f"[suggestions.gg]({base_site})")
         embed.add_field("Discord", f"[suggestions.gg/discord]({base_site}/contact)")
         embed.add_field(
             "Github", f"[suggestions.gg/github](https://github.com/suggestionsbot)"
         )
         embed.add_field(
-            "Legal",
-            f"[Privacy Policy]({base_site}/privacy) | [Terms of Service]({base_site}/terms)",
+            "Legális",
+            f"[Adatvédelem]({base_site}/privacy) | [Általános Szerződési Feltételek]({base_site}/terms)",
         )
-        embed.add_field("Version", bot.version)
+        embed.add_field("Verzió", bot.version)
         embed.set_footer(text=f"© {year} Anthony Collier")
 
         translations = {
@@ -170,7 +170,7 @@ async def create_bot(database_wrapper=None) -> SuggestionsBot:
         }
         if interaction.locale in translations:
             data = translations[interaction.locale]
-            embed.description += f"\n\n{data['language']} translations by {data['username']}(`{data['author']}`)"
+            embed.description += f"\n\n{data['language']} fordítások {data['username']}(`{data['author']}`) által"
 
         await interaction.send(embed=embed)
 
@@ -189,7 +189,7 @@ async def create_bot(database_wrapper=None) -> SuggestionsBot:
             latency = bot.latency
 
         await interaction.send(
-            f"Pong!\n**Average cluster latency:** `{round(bot.latency, 2)}ms`\n"
+            f"Pong!\n**Átlagos Cluster Válaszidő:** `{round(bot.latency, 2)}ms`\n"
             f"**Cluster {bot.cluster_id} - Shard {shard_id}:** `{round(latency, 2)}ms`"
         )
 
@@ -241,10 +241,10 @@ async def create_bot(database_wrapper=None) -> SuggestionsBot:
             result = "".join(format_exception(e, e, e.__traceback__))  # noqa
 
         async def format_page(code, page_number):
-            embed = disnake.Embed(title=f"Eval for {ctx.author.name}")
+            embed = disnake.Embed(title=f"Kód Végrehajtás: {ctx.author.name}")
             embed.description = f"```\n{code}\n```"
 
-            embed.set_footer(text=f"Page {page_number}")
+            embed.set_footer(text=f"Oldal {page_number}")
             return embed
 
         paginator: DisnakePaginator = DisnakePaginator(
