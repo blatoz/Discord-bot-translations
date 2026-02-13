@@ -90,7 +90,7 @@ class State:
             error_id = "".join(
                 random.choices(string.ascii_lowercase + string.digits, k=8)
             )
-            log.critical("Encountered an existing error id")
+            log.critical("Meglévő hiba ID-val találkozott")
 
         self.existing_error_ids.add(error_id)
         return error_id
@@ -101,7 +101,7 @@ class State:
             pag_id = "".join(
                 random.choices(string.ascii_lowercase + string.digits, k=8)
             )
-            log.critical("Encountered an existing paginator id")
+            log.critical("Meglévő paginator ID-val találkozott")
 
         self.existing_paginator_ids.add(pag_id)
         return pag_id
@@ -115,7 +115,7 @@ class State:
             suggestion_id = "".join(
                 random.choices(string.ascii_lowercase + string.digits, k=8)
             )
-            log.critical("Encountered an existing SID")
+            log.critical("Meglévő SID-vel találkozott")
 
         self.existing_suggestion_ids.add(suggestion_id)
         return suggestion_id
@@ -194,7 +194,7 @@ class State:
 
         self.autocomplete_cache.add_entry(guild_id, data, override=True)
         log.debug(
-            "Populated sid cache for guild %s",
+            "A szerver számára feltöltött oldalköteg-gyorsítótár %s",
             guild_id,
             extra={"interaction.guild.id": guild_id},
         )
@@ -210,7 +210,7 @@ class State:
         data: List[str] = [d["_id"] for d in data]
         self.view_voters_cache.add_entry(guild_id, data, override=True)
         log.debug(
-            "Populated view voter cache for guild %s",
+            "A szerver szavazói cache-ének feltöltött nézete %s",
             guild_id,
             extra={"interaction.guild.id": guild_id},
         )
@@ -232,7 +232,7 @@ class State:
             self.autocomplete_cache.add_entry(guild_id, current_values, override=True)
 
         log.debug(
-            "Added sid %s to cache for guild %s",
+            "Hozzáadva sid %s a(z) %s szerver cache-jéhez",
             suggestion_id,
             guild_id,
             extra={"interaction.guild.id": guild_id, "suggestion.id": suggestion_id},
@@ -256,7 +256,7 @@ class State:
                     override=True,
                 )
                 log.debug(
-                    "Removed sid %s from the cache for guild %s",
+                    "Törölve sid %s a(z) %s szerver cache-jéhez",
                     suggestion_id,
                     guild_id,
                     extra={
@@ -362,7 +362,7 @@ class State:
             old_length = len(self.autocomplete_cache)
             self.autocomplete_cache.force_clean()
             if len(self.autocomplete_cache) != old_length:
-                log.debug("Cleaned autocomplete caches")
+                log.debug("Tisztított automatikus kiegészítés cache-ek")
 
             # This allows for immediate task finishing rather
             # than being forced to wait the whole 10 minutes
