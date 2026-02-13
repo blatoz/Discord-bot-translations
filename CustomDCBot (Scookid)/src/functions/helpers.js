@@ -240,7 +240,7 @@ async function messageLogToStringToPaste(channel, limit = 100, expire = '1month'
     (await channel.messages.fetch({limit: limit > 100 ? 100 : limit})).forEach(m => {
         messages = `[${m.id}] ${m.author.bot ? '[BOT] ' : ''}${formatDiscordUserName(m.author)}  (${m.author.id}): ${m.content}\n` + messages;
     });
-    messages = `=== CHANNEL-LOG OF ${channel.name} (${channel.id}): Last messages before report ${formatDate(new Date())} ===\n` + messages;
+    messages = `=== CHANNEL-LOG OF ${channel.name} (${channel.id}): Utólsó üzenetek a bejelentés előtt ${formatDate(new Date())} ===\n` + messages;
     return await postToSCNetworkPaste(messages,
         {
             expire,
