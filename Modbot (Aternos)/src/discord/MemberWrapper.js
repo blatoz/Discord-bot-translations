@@ -50,7 +50,7 @@ export default class MemberWrapper {
         const id = interaction.customId.split(':').at(position);
         const user = id ? await (new UserWrapper(id)).fetchUser() : null;
         if (!user) {
-            await interaction.reply(ErrorEmbed.message('Unknown user!'));
+            await interaction.reply(ErrorEmbed.message('Ismeretlen felhasználó!'));
             return null;
         }
 
@@ -66,7 +66,7 @@ export default class MemberWrapper {
     static async getMember(interaction, id) {
         const user = await (new UserWrapper(id)).fetchUser();
         if (!user) {
-            await interaction.reply(ErrorEmbed.message('Unknown user!'));
+            await interaction.reply(ErrorEmbed.message('Ismeretlen felhasználó!'));
             return null;
         }
 
@@ -152,7 +152,7 @@ export default class MemberWrapper {
         if (banInfo) {
             return {
                 banned: true,
-                reason: banInfo.reason ?? 'Unknown',
+                reason: banInfo.reason ?? 'Ismeretlen',
                 comment: null,
                 end: null,
             };
@@ -194,7 +194,7 @@ export default class MemberWrapper {
         if (this.member?.isCommunicationDisabled?.()) {
             return {
                 muted: true,
-                reason: 'Unknown (time-out)',
+                reason: 'Ismeretlen (time-out)',
                 comment: null,
                 end: this.member.communicationDisabledUntilTimestamp,
             };
@@ -204,7 +204,7 @@ export default class MemberWrapper {
         if (mutedRole && this.member && this.member.roles.cache.get(mutedRole.id)) {
             return {
                 muted: true,
-                reason: 'Unknown (muted-role)',
+                reason: 'Ismeretlen (muted-role)',
                 comment: null,
                 end: null
             };
@@ -309,7 +309,7 @@ export default class MemberWrapper {
         const total = await this.getStrikeSum();
         await moderation.log(total);
         const punishment = (await this.getGuildSettings()).findPunishment(total);
-        await this.executePunishment(punishment, `Reaching ${total} strikes`,  null, true);
+        await this.executePunishment(punishment, `Elérte a(z) ${total}. strike-ot`,  null, true);
     }
 
     /**
@@ -336,7 +336,7 @@ export default class MemberWrapper {
             if (allowEmpty)
                 return;
             else
-                throw new Error('Empty punishment');
+                throw new Error('Üres bűntetés');
         }
         if (typeof punishment.duration === 'string') {
             punishment.duration = parseTime(punishment.duration);
@@ -359,7 +359,7 @@ export default class MemberWrapper {
                 return this.strike(reason, comment, this.user.client.user);
 
             default:
-                throw new Error(`Unknown punishment action ${punishment.action}`);
+                throw new Error(`Ismeretlen bűntetés akció ${punishment.action}`);
         }
     }
 
@@ -372,7 +372,7 @@ export default class MemberWrapper {
      * @returns {Promise<void>}
      */
     async pardon(reason, comment, moderator, amount = 1){
-        await this.guild.sendDM(this.user, `${amount} strikes have been pardoned in ${bold(this.guild.guild.name)} | ${reason}`);
+        await this.guild.sendDM(this.user, `${amount} strike-ok vissza lettek vonva itt ${bold(this.guild.guild.name)} | ${reason}`);
 
         await (await this.createModeration('pardon', reason, comment, null, moderator.id, -amount)).log();
     }
@@ -471,7 +471,7 @@ export default class MemberWrapper {
         if (!timeout) {
             mutedRole = await this.getMutedRole();
             if (!mutedRole) {
-                await this.guild.log({content: 'Can\'t mute user because no valid muted role is specified'});
+                await this.guild.log({content: 'Nem tudom némitani mert nincsen érvényes némitási rang megadva.'});
                 return;
             }
         }
@@ -560,7 +560,7 @@ export default class MemberWrapper {
      */
     async dmPunishedUser(verb, reason, duration = null, preposition = 'from') {
         return this.guild.sendDM(this.user,
-            `You have been ${verb} ${preposition} ${bold(this.guild.guild.name)}${duration ? ` for ${formatTime(duration)}` : ''}: ${reason}`
+            `Ki lettél ${verb} ${preposition} ${bold(this.guild.guild.name)}${duration ? ` for ${formatTime(duration)}` : ''}: ${reason}`
         );
     }
 

@@ -180,8 +180,8 @@ export default class GuildWrapper {
                     RESTJSONErrorCodes.MissingAccess,
                     RESTJSONErrorCodes.UnknownChannel,
                 ].includes(e.code)) {
-                    await logger.warn(`Failed to send message to ${channel.name} (${channelId})` +
-                        `in ${this.guild.name} (${this.guild.id}): ${e.name}`, e);
+                    await logger.warn(`Nem sikerült ide üzenetet küldeni ${channel.name} (${channelId})` +
+                        `szerver ${this.guild.name} (${this.guild.id}): ${e.name}`, e);
                 } else {
                     throw e;
                 }
