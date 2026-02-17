@@ -45,7 +45,7 @@ export default class LogMessageUpdateEventListener extends MessageUpdateEventLis
             new EmbedBuilder()
                 .setColor(colors.ORANGE)
                 .setAuthor({
-                    name: `Message by ${escapeMarkdown(message.member.displayName)} in #${message.channel.name} was edited`,
+                    name: `Az üzenet ${escapeMarkdown(message.member.displayName)} által küldve #${message.channel.name} csatornán szerkesztve lett.`,
                     iconURL: message.member.displayAvatarURL()
                 })
                 .setDescription(formatted.trim())
