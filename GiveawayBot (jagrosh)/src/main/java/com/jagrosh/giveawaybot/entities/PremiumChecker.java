@@ -66,7 +66,7 @@ public class PremiumChecker
     
     public void start() throws LoginException, InterruptedException
     {
-        webhook.send(WebhookLog.Level.INFO, Constants.TADA + " Starting premium checker...");
+        webhook.send(WebhookLog.Level.INFO, Constants.TADA + " Prémium checker indítása...");
         jda = JDABuilder.createDefault(botToken, GatewayIntent.GUILD_MEMBERS)
                 .setStatus(OnlineStatus.ONLINE)
                 .setMemberCachePolicy(MemberCachePolicy.ALL)
@@ -81,7 +81,7 @@ public class PremiumChecker
             {
                 if(event instanceof ReadyEvent)
                 {
-                    webhook.send(WebhookLog.Level.INFO, Constants.TADA + " Checker ready! `" + jda.getGuildById(PremiumLevel.SERVER_ID).getMemberCache().size() + "`");
+                    webhook.send(WebhookLog.Level.INFO, Constants.TADA + " Checker elindult! `" + jda.getGuildById(PremiumLevel.SERVER_ID).getMemberCache().size() + "`");
                     schedule.scheduleWithFixedDelay(() -> update(), 0, 10, TimeUnit.MINUTES);
                 }
             }
@@ -98,7 +98,7 @@ public class PremiumChecker
     {
         try
         {
-            log.debug("Updating premium users...");
+            log.debug("Prémium felhaszálók frissítése...");
 
             // summary of changes
             StringBuilder sb = new StringBuilder();
@@ -128,7 +128,7 @@ public class PremiumChecker
                 {
                     database.removePremium(userId);
                     sb.append("\n- ").append(userId).append(" ").append(oldLevel);
-                    log.info(String.format("Removed %d from %s", userId, oldLevel));
+                    log.info(String.format("Eltávolítva %d innen %s", userId, oldLevel));
                 }
 
                 // if the member needs premium level changed, add to changed list and update db
@@ -137,7 +137,7 @@ public class PremiumChecker
                     net.dv8tion.jda.api.entities.User u = newLevel.getLeft().getUser();
                     database.updatePremiumLevel(userId, u.getName(), u.getDiscriminator(), u.getAvatarId(), newLevel.getRight());
                     sb.append("\n# ").append(userId).append(" ").append(oldLevel).append(" -> ").append(newLevel.getRight());
-                    log.info(String.format("Changed %d from %s to %s", userId, oldLevel, newLevel.getRight()));
+                    log.info(String.format("Megváltozott %d erről: %s erre: %s", userId, oldLevel, newLevel.getRight()));
                 }
 
                 //else if the level has not channged, then we do nothing except remove from 'added'
@@ -153,12 +153,12 @@ public class PremiumChecker
                 net.dv8tion.jda.api.entities.User u = pair.getLeft().getUser();
                 database.updatePremiumLevel(u.getIdLong(), u.getName(), u.getDiscriminator(), u.getAvatarId(), pair.getRight());
                 sb.append("\n+ ").append(u.getId()).append(" ").append(pair.getRight());
-                log.info(String.format("Added %d to %s", u.getIdLong(), pair.getRight()));
+                log.info(String.format("Hozzáadva %d ide: %s", u.getIdLong(), pair.getRight()));
             }
 
             // send to webhook, if anything changed
             if(sb.length() > 1)
-                webhook.send(WebhookLog.Level.INFO, "**Premium Update** ```diff" + sb.toString() + "\n```");
+                webhook.send(WebhookLog.Level.INFO, "**Prémium Frissítés** ```diff" + sb.toString() + "\n```");
         }
         catch(Exception ex)
         {
