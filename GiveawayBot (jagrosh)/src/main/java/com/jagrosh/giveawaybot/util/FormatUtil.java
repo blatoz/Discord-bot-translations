@@ -55,37 +55,37 @@ public class FormatUtil
         StringBuilder builder = new StringBuilder();
         int years = (int)(timeseconds / (60*60*24*365));
         if(years>0){
-            builder.append("**").append(years).append("** ").append(pluralise(years, "year", "years")).append(", ");
+            builder.append("**").append(years).append("** ").append(pluralise(years, "év", "évek")).append(", ");
             timeseconds = timeseconds % (60*60*24*365);
         }
         int weeks = (int)(timeseconds / (60*60*24*7));
         if(weeks>0){
-            builder.append("**").append(weeks).append("** ").append(pluralise(weeks, "week", "weeks")).append(", ");
+            builder.append("**").append(weeks).append("** ").append(pluralise(weeks, "hét", "hetek")).append(", ");
             timeseconds = timeseconds % (60*60*24*7);
         }
         int days = (int)(timeseconds / (60*60*24));
         if(days>0){
-            builder.append("**").append(days).append("** ").append(pluralise(days, "day", "days")).append(", ");
+            builder.append("**").append(days).append("** ").append(pluralise(days, "nap", "napok")).append(", ");
             timeseconds = timeseconds % (60*60*24);
         }
         int hours = (int)(timeseconds / (60*60));
         if(hours>0){
-            builder.append("**").append(hours).append("** ").append(pluralise(hours, "hour", "hours")).append(", ");
+            builder.append("**").append(hours).append("** ").append(pluralise(hours, "óra", "órák")).append(", ");
             timeseconds = timeseconds % (60*60);
         }
         int minutes = (int)(timeseconds / (60));
         if(minutes>0){
-            builder.append("**").append(minutes).append("** ").append(pluralise(minutes, "minute", "minutes")).append(", ");
+            builder.append("**").append(minutes).append("** ").append(pluralise(minutes, "perc", "percek")).append(", ");
             timeseconds = timeseconds % (60);
         }
         if(timeseconds>0) {
-            builder.append("**").append(timeseconds).append("** ").append(pluralise(timeseconds, "second", "seconds"));
+            builder.append("**").append(timeseconds).append("** ").append(pluralise(timeseconds, "másodperc", "másodpercek"));
         }
         String str = builder.toString();
         if(str.endsWith(", "))
             str = str.substring(0,str.length()-2);
         if(str.equals(""))
-            str="**No time**";
+            str="**Nincs idő**";
         return str;
     }
 }
