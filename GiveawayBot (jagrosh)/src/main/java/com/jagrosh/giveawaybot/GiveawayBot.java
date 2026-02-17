@@ -56,7 +56,7 @@ public class GiveawayBot
     {
         // send startup message
         webhook = new WebhookLog(config.getString("webhook.url"), config.getString("webhook.name"));
-        webhook.send(WebhookLog.Level.INFO, "GiveawayBot is starting!");
+        webhook.send(WebhookLog.Level.INFO, "GiveawayBot indul!");
         
         // get some static values
         cmdPrefix = config.getString("cmd-prefix");
@@ -65,7 +65,7 @@ public class GiveawayBot
         
         // connect to the database
         database = new Database(config.getString("database.host"), config.getString("database.user"), config.getString("database.pass"));
-        webhook.send(WebhookLog.Level.INFO, String.format("Database contains `%d` giveaways", database.countAllGiveaways()));
+        webhook.send(WebhookLog.Level.INFO, String.format("Adatbázis tartalmaz `%d` Nyereményjáték", database.countAllGiveaways()));
         
         // instantiate the remaing components
         uploader = new FileUploader(config.getStringList("file-uploader"));
@@ -117,8 +117,8 @@ public class GiveawayBot
         if(config.hasPath("send-message") && config.getBoolean("send-message"))
             restClient.request(Route.POST_MESSAGE.format(config.getLong("control-channel")), new SentMessage.Builder()
                     .addComponent(new ActionRowComponent(
-                            new ButtonComponent(ButtonComponent.Style.SUCCESS, "View Statistics", "view-statistics"), 
-                            new ButtonComponent(ButtonComponent.Style.DANGER, "Shut Down", "shutdown"))).build().toJson());
+                            new ButtonComponent(ButtonComponent.Style.SUCCESS, "Statisztikák Megtekintése", "view-statistics"), 
+                            new ButtonComponent(ButtonComponent.Style.DANGER, "Leállítás", "shutdown"))).build().toJson());
     }
     
     public void start() throws Exception
@@ -148,7 +148,7 @@ public class GiveawayBot
                 premium.shutdown();
                 manager.shutdown();
                 uploader.shutdown();
-                webhook.sendBlocking(WebhookLog.Level.INFO, "Shutting down...  `" + reason + "`");
+                webhook.sendBlocking(WebhookLog.Level.INFO, "Leállás...  `" + reason + "`");
                 webhook.shutdown();
                 Thread.sleep(500);
                 database.shutdown();
