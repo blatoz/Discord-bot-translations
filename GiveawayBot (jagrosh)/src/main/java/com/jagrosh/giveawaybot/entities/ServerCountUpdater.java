@@ -81,9 +81,9 @@ public class ServerCountUpdater
             tokens.forEach((key,val) -> json.put(key, val));
             RestResponse res2 = bot.getRestClient().simpleRequest(API_ENDPOINT, Route.Type.POST, json.toString()).get();
             if(res2.isSuccess() && res2.getBody().has("failure"))
-                res2.getBody().getJSONObject("failure").toMap().forEach((site,val) -> log.warn(String.format("Updating server count for '%s' failed: %s", site, val)));
+                res2.getBody().getJSONObject("failure").toMap().forEach((site,val) -> log.warn(String.format("Szerver tagok száma frissítése itt: '%s' sikertelen lett: %s", site, val)));
             else
-                log.warn("Updating server counts failed: " + res2.getBody().toString());
+                log.warn("Szerver számláló frissítve: " + res2.getBody().toString());
         }
         catch(Exception ex)
         {
