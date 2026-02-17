@@ -53,7 +53,7 @@ export default class AutoResponseEventListener extends MessageCreateEventListene
             } catch (e) {
                 if (e.code === RESTJSONErrorCodes.MissingPermissions) {
                     const channel = /** @type {import('discord.js').GuildTextBasedChannel} */ message.channel;
-                    await logger.warn(`Missing permissions to respond to message in channel ${channel?.name} (${message.channelId}) of guild ${message.guild?.name} (${message.guildId})`, e);
+                    await logger.warn(`Hiányzó jogosultságok hogy tudjon válaszolni az üzenetre csatornán ${channel?.name} (${message.channelId}) szerverren ${message.guild?.name} (${message.guildId})`, e);
                     return;
                 }
                 throw e;
