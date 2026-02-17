@@ -118,7 +118,7 @@ public class GiveawayListener implements InteractionsListener
             
             // sanity check
             if(g.getGuildId() != interaction.getGuildId() || g.getChannelId() != interaction.getChannelId())
-                log.debug(String.format("Giveaway guild/channel ids don't match for giveaway %d! Giveaway: %d/%d Interaction: %d/%d", g.getMessageId(), g.getGuildId(), g.getChannelId(), interaction.getGuildId(), interaction.getChannelId()));
+                log.debug(String.format("Nyereményjátek szerver/csatorna id-k nem egyeznek a Nyereményjátéknál %d! Nyereményjáték: %d/%d Interakció: %d/%d", g.getMessageId(), g.getGuildId(), g.getChannelId(), interaction.getGuildId(), interaction.getChannelId()));
             
             int entered = bot.getDatabase().addEntry(id, interaction.getUser());
             long timeEnter = System.nanoTime();
@@ -163,9 +163,9 @@ public class GiveawayListener implements InteractionsListener
                     return new MessageCallback(new SentMessage.Builder()
                             .setContent("```css"
                                     + "\nUptime   : " + FormatUtil.secondsToTime(uptime).replace("*", "")
-                                    + "\nMemory   : " + used + "mb / " + total + "mb"
-                                    + "\nGiveaways: " + bot.getDatabase().countAllGiveaways()
-                                    + "\nAvg Req  : " + (interaction.getClient().getMetrics().getOrDefault("TotalTime", 0L) / interaction.getClient().getMetrics().getOrDefault("TotalRequests", 1L) * 1e-9)
+                                    + "\nMemória   : " + used + "mb / " + total + "mb"
+                                    + "\n Nyereményjátekok: " + bot.getDatabase().countAllGiveaways()
+                                    + "\nÁtlagos Req  : " + (interaction.getClient().getMetrics().getOrDefault("TotalTime", 0L) / interaction.getClient().getMetrics().getOrDefault("TotalRequests", 1L) * 1e-9)
                                     + "\nReq/Sec  : " + (interaction.getClient().getMetrics().getOrDefault("TotalRequests", 0L) / uptime)
                                     + "\nMetrics  : " + interaction.getClient().getMetrics()
                                     + "\nMetrics2 : " + metrics
@@ -173,11 +173,11 @@ public class GiveawayListener implements InteractionsListener
                             .setEphemeral(true).build());
                 case "shutdown":
                     return new MessageCallback(new SentMessage.Builder().setContent("This will shut down the bot. Are you sure?")
-                            .addComponent(new ActionRowComponent(new ButtonComponent(ButtonComponent.Style.DANGER, "Shut Down", "actual-shutdown")))
+                            .addComponent(new ActionRowComponent(new ButtonComponent(ButtonComponent.Style.DANGER, "Leállìtás", "actual-shutdown")))
                             .setEphemeral(true).build());
                 case "actual-shutdown":
                     bot.shutdown(interaction.getUser().getUsername() + "#" + interaction.getUser().getDiscriminator() + " (" + interaction.getUser().getIdLong() + ")" );
-                    return new MessageCallback(new SentMessage.Builder().setContent("Attempting shutdown...").setEphemeral(true).removeComponents().build(), true);
+                    return new MessageCallback(new SentMessage.Builder().setContent("Leállítás megprobálása...").setEphemeral(true).removeComponents().build(), true);
                     
             }
         }
