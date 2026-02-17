@@ -35,9 +35,9 @@ export default class RestoreMutedRoleEventListener extends GuildMemberAddEventLi
 
             const guild = await GuildWrapper.fetch(member.guild.id);
             const embed = new KeyValueEmbed()
-                .setTitle(`Restored mute | ${escapeMarkdown(member.displayName)}`)
-                .addPair('User ID', member.id)
-                .setDescription(`Mute ID: ${mute.id}`)
+                .setTitle(`Némitás visszállítva | ${escapeMarkdown(member.displayName)}`)
+                .addPair('Felhasználó ID', member.id)
+                .setDescription(`Némitási ID: ${mute.id}`)
                 .setFooter({text: member.id});
             await guild.log({embeds: [embed]});
         }
