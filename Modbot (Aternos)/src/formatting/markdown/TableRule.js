@@ -10,6 +10,6 @@ export default class TableRule extends TurndownRule {
      * @returns {string}
      */
     replacement(content, node) {
-        return codeBlock("Please click the 'View Article' button below to view this table.");
+        return codeBlock("Kérjük, kattintson az alábbi „Cikk megtekintése” gombra a táblázat megtekintéséhez.");
     };
 }

@@ -25,13 +25,13 @@ export default class ConfirmationEmbed extends KeyValueEmbed {
                 .addComponents(/** @type {*} */ new ButtonBuilder()
                     .setCustomId(`${this.command}:confirm:${this.confirmation}`)
                     .setStyle(this.confirmButtonStyle)
-                    .setLabel('Confirm'),
+                    .setLabel('Megerősít'),
                 )
                 // eslint-disable-next-line jsdoc/reject-any-type
                 .addComponents(/** @type {*} */ new ButtonBuilder()
                     .setCustomId(`confirmation:delete:${this.confirmation}`)
                     .setStyle(ButtonStyle.Secondary)
-                    .setLabel('Cancel')
+                    .setLabel('Megszakítás')
                 )
             ]
         };

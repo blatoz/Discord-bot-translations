@@ -80,18 +80,18 @@ export default class GuildAuditLogCreateEventListener extends EventListener {
 
             case AuditLogEvent.MemberPrune:
                 embed.setColor(colors.RED)
-                    .setTitle('Pruned members')
-                    .addPair('Removed', entry.extra.removed)
-                    .addPair('Days', entry.extra.days)
-                    .addPair('New member count', guild.memberCount);
+                    .setTitle('Tagok ritkitva')
+                    .addPair('Törölve', entry.extra.removed)
+                    .addPair('Napok', entry.extra.days)
+                    .addPair('Új tagok száma', guild.memberCount);
                 break;
 
             default:
                 return;
         }
 
-        embed.addPair('Moderator', userMention(entry.executor.id))
-            .addPair('Reason', entry.reason);
+        embed.addPair('Moderátor', userMention(entry.executor.id))
+            .addPair('Indok', entry.reason);
 
         let guildWrapper = new GuildWrapper(guild);
         await guildWrapper.log({
@@ -112,6 +112,6 @@ export default class GuildAuditLogCreateEventListener extends EventListener {
      */
     async createModeration(action, entry, guild, duration = null) {
         const member = new MemberWrapper(entry.target, guild);
-        await (await member.createModeration(action, entry.reason, 'Executed through Discord', duration, entry.executor.id)).log();
+        await (await member.createModeration(action, entry.reason, 'Végrehajtva discordon keresztül', duration, entry.executor.id)).log();
     }
 }

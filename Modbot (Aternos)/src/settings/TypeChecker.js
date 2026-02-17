@@ -12,7 +12,7 @@ export default class TypeChecker {
             return;
         }
         if (!types.includes(typeof value)) {
-            throw new TypeError(`${name} has the wrong type. Expected: ${types.join(', ')} Found: ${typeof value}`);
+            throw new TypeError(`${name} rossz típusa van. Várva: ${types.join(', ')} Találva: ${typeof value}`);
         }
     }
 

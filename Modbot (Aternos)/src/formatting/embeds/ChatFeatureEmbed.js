@@ -15,14 +15,14 @@ export default class ChatFeatureEmbed extends KeyValueEmbed {
         this.setTitle(title + ` [${feature.id}]`)
             .setColor(color)
             .addPair('Trigger', feature.trigger.asString())
-            .addPair('Global', yesNo(feature.global))
-            .addPairIf(!feature.global, 'Channels', feature.channels.map(channelMention).join(', '))
-            .addPairIf(cloudVision.isEnabled, 'Detect images', yesNo(feature.enableVision))
+            .addPair('Globális', yesNo(feature.global))
+            .addPairIf(!feature.global, 'Csatornák', feature.channels.map(channelMention).join(', '))
+            .addPairIf(cloudVision.isEnabled, 'Észlelt Képek', yesNo(feature.enableVision))
             .addFields(
                 // eslint-disable-next-line jsdoc/reject-any-type
                 /** @type {any} */
                 {
-                    name: 'Response',
+                    name: 'Válasz',
                     value: feature.response.substring(0, EMBED_FIELD_LIMIT)
                 },
             );

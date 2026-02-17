@@ -43,7 +43,7 @@ export default class TransferMuteToTimeoutInterval extends Interval {
                 await member.disableCommunicationUntil(parseInt(result.expireTime) * 1000);
                 await member.roles.remove(guildSettings.mutedRole);
             } catch (e) {
-                await logger.error(`Failed to transfer mute to timeout for user ${result.userid} in guild ${result.guildid}`, e);
+                await logger.error(`Nem sikerült átvinni a némítást időtúllépésre a(z) ${result.userid} felhasználó számára a(z) ${result.guildid} szerverben.`, e);
             }
         }
     }

@@ -30,7 +30,7 @@ export default class IntervalManager {
         }
         catch(error) {
             try {
-                await logger.error(`Failed to run interval '${interval.constructor.name}'`, error);
+                await logger.error(`Nem sikerült az intervalum '${interval.constructor.name}'`, error);
             }
             catch (e) {
                 console.error(e);

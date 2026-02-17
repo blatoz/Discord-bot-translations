@@ -25,15 +25,15 @@ export default class BanRemoveEventListener extends EventListener {
 
             const embed = new KeyValueEmbed()
                 .setAuthor({
-                    name: `Ban ${databaseBan.id} was deleted from guild | ${escapeMarkdown(ban.user.displayName)}`,
+                    name: `Kitiltás ${databaseBan.id} törölve lett a szerverről | ${escapeMarkdown(ban.user.displayName)}`,
                     iconURL: ban.user.avatarURL()
                 })
                 .setFooter({text: ban.user.id})
-                .addPair('User ID', ban.user.id);
+                .addPair('Felhasználó ID', ban.user.id);
 
             if (databaseBan.expireTime) {
                 const remaining = databaseBan.expireTime - Math.floor(Date.now()/1000);
-                embed.addPair('Remaining timer', formatTime(remaining));
+                embed.addPair('Maradt idő', formatTime(remaining));
             }
             await (await GuildWrapper.fetch(ban.guild.id)).log({embeds: [embed]});
         }

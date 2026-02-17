@@ -15,28 +15,28 @@ export default class ModerationEmbed extends KeyValueEmbed {
      */
     constructor(moderation, user) {
         super();
-        this.setTitle(`Moderation #${moderation.id} | ${moderation.action.toUpperCase()} | ${user.displayName}`)
+        this.setTitle(`Moderáció #${moderation.id} | ${moderation.action.toUpperCase()} | ${user.displayName}`)
             .setColor(resolveColor(moderation.action))
             .setFooter({text: `${user.displayName} - ${moderation.userid}`, iconURL: user.displayAvatarURL()})
-            .addPair('User ID', moderation.userid)
-            .addPair('Created at',  time(moderation.created, TimestampStyles.LongDate));
+            .addPair('Felhasználó ID', moderation.userid)
+            .addPair('Létrehozva ekkor',  time(moderation.created, TimestampStyles.LongDate));
 
         if (moderation.action === 'strike') {
-            this.addPair('Strikes', moderation.value);
+            this.addPair('Strike-ok', moderation.value);
         } else if (moderation.action === 'pardon') {
-            this.addPair('Pardoned Strikes', -moderation.value);
+            this.addPair('Visszavont Strike-ok', -moderation.value);
         }
 
         if (moderation.expireTime) {
-            this.addPair('Duration', formatTime(moderation.expireTime - moderation.created));
-            this.addPair('Expires', time(moderation.expireTime, TimestampStyles.LongDate));
+            this.addPair('Lejárat', formatTime(moderation.expireTime - moderation.created));
+            this.addPair('Lejár', time(moderation.expireTime, TimestampStyles.LongDate));
         }
 
         if (moderation.moderator) {
-            this.addPair('Moderator', userMention(moderation.moderator));
+            this.addPair('Moderátor', userMention(moderation.moderator));
         }
 
-        this.addPair('Reason', moderation.reason);
-        this.addPairIf(moderation.comment, 'Comment', moderation.comment);
+        this.addPair('Indok', moderation.reason);
+        this.addPairIf(moderation.comment, 'Komment', moderation.comment);
     }
 }

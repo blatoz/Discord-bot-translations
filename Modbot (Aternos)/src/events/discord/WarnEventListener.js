@@ -12,7 +12,7 @@ export default class WarnEventListener extends EventListener {
      */
     async execute(warning) {
         await logger.warn({
-            message: 'The discord client emitted a warning',
+            message: 'A discord kliens egy figyelmezetetést adott.',
             warning
         });
     }

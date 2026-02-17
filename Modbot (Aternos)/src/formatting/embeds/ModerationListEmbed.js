@@ -9,7 +9,7 @@ export default class ModerationListEmbed extends KeyValueEmbed {
         super();
         this.setColor(colors.ORANGE)
             .setAuthor({
-                name: `Moderations for ${user.displayName}`,
+                name: `Moderációk: ${user.displayName}`,
                 iconURL: user.displayAvatarURL()
             });
     }

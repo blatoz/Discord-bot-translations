@@ -13,13 +13,13 @@ export default class PurgeLogEmbed extends KeyValueEmbed {
     constructor(interaction, count, limit, user = null, regex = null) {
         super();
         this.setColor(colors.RED)
-            .setAuthor({name: `${interaction.member.displayName} purged ${count} messages`})
-            .addPair('Moderator ID', interaction.user.id)
-            .addPair('Tested messages', limit)
+            .setAuthor({name: `${interaction.member.displayName} tömegesen törölve ${count} üzenet`})
+            .addPair('Moderátor ID', interaction.user.id)
+            .addPair('Tesztelt Üzenetek', limit)
             .newLine()
-            .addLine(bold('Filters:'))
-            .addPair('Channel', channelMention(interaction.channel.id))
-            .addPairIf(user, 'User', userMention(user?.id))
+            .addLine(bold('Filterek:'))
+            .addPair('Csatorna', channelMention(interaction.channel.id))
+            .addPairIf(user, 'Felhasználó', userMention(user?.id))
             .addPairIf(regex, 'Regex', codeBlock(regex))
             .setFooter({text: interaction.user.id.toString()});
     }

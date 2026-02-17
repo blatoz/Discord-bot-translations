@@ -5,7 +5,7 @@ export default class RateLimitEventListener extends EventListener {
 
     async execute(details) {
         await logger.warn({
-            message: 'The bot hit a ratelimit',
+            message: 'A bot elérte a ratelimitet',
             details
         });
     }

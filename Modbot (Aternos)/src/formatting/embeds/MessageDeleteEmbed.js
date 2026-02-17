@@ -12,19 +12,19 @@ export default class MessageDeleteEmbed extends EmbedWrapper {
         this.setColor(colors.RED);
         if (message.system) {
             this.setAuthor({
-                name: `A system message was deleted in #${message.channel.name}`
+                name: `Egy rendszer üzenet törölve lett itt #${message.channel.name}`
             });
         }
         else {
             /** @type {import('discord.js').GuildMember|import('discord.js').User} */
             const author = message.member ?? message.author;
             this.setAuthor({
-                name: `Message by ${escapeMarkdown(author.displayName)} was deleted in #${message.channel.name}`,
+                name: `Üzenet ${escapeMarkdown(author.displayName)} által küldve törölve lett itt #${message.channel.name}`,
                 iconURL: author.displayAvatarURL()
             }).setFooter({text:
-                    `Message ID: ${message.id}\n` +
-                    `Channel ID: ${message.channel.id}\n` +
-                    `User ID: ${message.author.id}`
+                    `Üzenet ID: ${message.id}\n` +
+                    `Csatorna ID: ${message.channel.id}\n` +
+                    `Felhasználó ID: ${message.author.id}`
             });
 
             if (message.content.length) {

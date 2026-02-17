@@ -31,22 +31,22 @@ export default class UnbanInterval extends Interval {
                 const user = await bot.client.users.fetch(result.userid);
                 const member = new MemberWrapper(user, guild);
                 try {
-                    await member.unban('Temporary ban completed!', null, bot.client.user);
+                    await member.unban('Ideiglenes kitiltás végrehajtva!', null, bot.client.user);
                 } catch (e) {
                     if (e.code === RESTJSONErrorCodes.MissingPermissions) {
                         await database.query('UPDATE moderations SET active = FALSE WHERE active = TRUE AND guildid = ? AND userid = ? AND action = \'ban\'',
                             guild.guild.id, user.id);
-                        await guild.log(new ErrorEmbed('Missing permissions to unban user!')
+                        await guild.log(new ErrorEmbed('Hiányzó jogosultságok felhasználó kitiltás feoldása közben!')
                             .setAuthor({name: user.displayName, iconURL: user.displayAvatarURL()})
                             .setFooter({text: user.id})
                             .toMessage(false));
-                        await logger.warn(`Missing permissions to unban user ${result.userid} in guild ${result.guildid}`);
+                        await logger.warn(`Hiányzó jogosutlságok hogy kitiltást feloldjam felhasználónak: ${result.userid} szerveren ${result.guildid}`);
                     } else {
                         throw e;
                     }
                 }
             } catch (e) {
-                await logger.error(`Failed to unban user ${result.userid} in guild ${result.guildid}`, e);
+                await logger.error(`Nem sikerült feloldani a(z) ${result.userid} felhasználó kitiltását feoldani a(z) ${result.guildid} szerverben.`, e);
             }
         }
     }

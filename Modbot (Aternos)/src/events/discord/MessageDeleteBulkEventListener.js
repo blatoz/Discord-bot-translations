@@ -16,7 +16,7 @@ export default class MessageDeleteBulkEventListener extends EventListener {
      */
     async execute(messages, channel) {
         const embed = new EmbedBuilder()
-            .setTitle(`${messages.size} messages were deleted in ${channel.name}`)
+            .setTitle(`${messages.size} üzenetek törölve lettek itt ${channel.name}`)
             .setColor(colors.RED);
         const attachments = [];
         for (const message of messages.sort((m1, m2) => m1.createdTimestamp - m2.createdTimestamp).values()) {
@@ -45,7 +45,7 @@ export default class MessageDeleteBulkEventListener extends EventListener {
             const description = embed.data.description ?? '';
             embed.setDescription((description + data).substring(0, EMBED_DESCRIPTION_LIMIT));
             if (description.length + data.length > EMBED_DESCRIPTION_LIMIT) {
-                embed.setFooter({text: 'This message was shortened due to Discord API limitations.'});
+                embed.setFooter({text: 'Ez az üzenet rövidítve lett a Discord APi limitáció miatt.'});
                 break;
             }
         }

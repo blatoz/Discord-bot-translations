@@ -15,16 +15,16 @@ export default class GuildMemberRemoveEventListener extends EventListener {
      */
     async execute(member) {
         const embed = new KeyValueEmbed()
-            .setTitle(`${member.displayName} left this server`)
+            .setTitle(`${member.displayName} elhagyta a szervert`)
             .setColor(colors.RED)
             .setThumbnail(member.displayAvatarURL())
-            .addPair('User ID', member.user.id)
-            .addPair('Created Account', time(member.user.createdAt, TimestampStyles.RelativeTime))
+            .addPair('Felhasználó ID', member.user.id)
+            .addPair('Fiók Létrehozva', time(member.user.createdAt, TimestampStyles.RelativeTime))
             .setTimestamp()
-            .setFooter({text: `Members: ${member.guild.memberCount}`});
+            .setFooter({text: `Tagok: ${member.guild.memberCount}`});
 
         if (member.joinedTimestamp) {
-            embed.addPair('Joined', time(member.joinedAt, TimestampStyles.RelativeTime));
+            embed.addPair('Csatlakozott', time(member.joinedAt, TimestampStyles.RelativeTime));
         }
 
         const guild = await GuildWrapper.fetch(member.guild.id);
