@@ -95,7 +95,7 @@ public class GiveawayManager
             }
             catch(Exception ex)
             {
-                log.error("Exception in ending giveaways: ", ex);
+                log.error("Exception van a nyereményjáték végénél: ", ex);
             }
         }, 0, 1, TimeUnit.SECONDS);
     }
@@ -210,9 +210,9 @@ public class GiveawayManager
             giveaway.setGuildId(guildId);
             giveaway.setChannelId(channelId);
             SentMessage sm = renderGiveaway(giveaway, 0);
-            log.debug("Attempting giveaway creation in " + guildId + ", json: " + sm.toJson());
+            log.debug("Nyereményjáték létrehozási megprobálása itt: " + guildId + ", json: " + sm.toJson());
             RestResponse res = rest.request(Route.POST_MESSAGE.format(channelId), sm.toJson()).get();
-            log.debug("Attempted to create giveaway, response: " + res.getStatus() + ", " + res.getBody());
+            log.debug("Nyereményjátek létrehozása negprobálása, válasz: " + res.getStatus() + ", " + res.getBody());
             if(!res.isSuccess())
             {
                 latestFailure.put(guildId, Instant.now());
@@ -226,12 +226,12 @@ public class GiveawayManager
             // sanity checks
             if(/*rm.getGuildId() != guildId ||*/ rm.getChannelId() != channelId)
             {
-                log.error(String.format("There's a mismatch in data! Interaction: %d/%d Message: %d/%d", guildId, channelId, rm.getGuildId(), rm.getChannelId()));
+                log.error(String.format("Van nem egyező adat! Interakció: %d/%d Üzenet: %d/%d", guildId, channelId, rm.getGuildId(), rm.getChannelId()));
                 //throw new GiveawayException(LocalizedMessage.ERROR_GENERIC_CREATION);
             }
             if(guildId > channelId)
             {
-                log.error(String.format("Odd data received; channel is older than guild! G: %d  C:%d", guildId, channelId));
+                log.error(String.format("Régi adatot kaptam; a csatorna öregebb mint a szerver! N: %d  Cs:%d", guildId, channelId));
             }
             
             database.createGiveaway(giveaway);
