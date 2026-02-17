@@ -8,13 +8,13 @@ export default class LogJoinEventListener extends GuildMemberAddEventListener {
     async execute(member) {
         const guild = await (GuildWrapper.fetch(member.guild.id));
         const embed = new KeyValueEmbed()
-            .setTitle(`${member.displayName} joined this server`)
+            .setTitle(`${member.displayName} csatlakozott a szerverre`)
             .setColor(colors.GREEN)
             .setThumbnail(member.displayAvatarURL())
-            .addPair('User ID', member.user.id)
-            .addPair('Created Account', time(member.user.createdAt, TimestampStyles.RelativeTime))
+            .addPair('Felhasználó ID', member.user.id)
+            .addPair('Fiók Létrehozva', time(member.user.createdAt, TimestampStyles.RelativeTime))
             .setTimestamp()
-            .setFooter({text: `Members: ${member.guild.memberCount}`});
+            .setFooter({text: `Tagok: ${member.guild.memberCount}`});
 
         await guild.logJoin({
             embeds: [embed]
