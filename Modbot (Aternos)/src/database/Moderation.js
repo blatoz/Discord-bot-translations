@@ -256,19 +256,19 @@ export default class Moderation {
                 new KeyValueEmbed()
                     .setColor(resolveColor(this.action))
                     .setAuthor({
-                        name: `Case ${this.id} | ${toTitleCase(this.action)} | ${await member.displayName()}`,
+                        name: `Ügy ${this.id} | ${toTitleCase(this.action)} | ${await member.displayName()}`,
                         iconURL: await member.displayAvatarURL()
                     })
                     .setFooter({text: user.id})
-                    .addPair('User', userMention(user.id))
-                    .addPair('User ID', user.id)
-                    .addPair('Moderator', userMention(moderator.id))
-                    .addPair('Moderator ID', moderator.id)
-                    .addPairIf(this.expireTime, 'Duration', formatTime(this.expireTime - this.created))
-                    .addPairIf(this.value, 'Amount', this.value)
-                    .addPairIf(total, 'Total Strikes', total)
-                    .addPairIf(this.reason, 'Reason', this.reason?.substring(0, 1024))
-                    .addPairIf(this.comment, 'Comment', this.comment?.substring(0, 1024))
+                    .addPair('Felhasználó, userMention(user.id))
+                    .addPair('Felhasználó ID', user.id)
+                    .addPair('Moderátor', userMention(moderator.id))
+                    .addPair('Moderátor ID', moderator.id)
+                    .addPairIf(this.expireTime, 'Időtartam, formatTime(this.expireTime - this.created))
+                    .addPairIf(this.value, 'Mennyiség, this.value)
+                    .addPairIf(total, 'Total Strike-ok', total)
+                    .addPairIf(this.reason, 'Indok', this.reason?.substring(0, 1024))
+                    .addPairIf(this.comment, 'Komment', this.comment?.substring(0, 1024))
             ]
         });
     }
