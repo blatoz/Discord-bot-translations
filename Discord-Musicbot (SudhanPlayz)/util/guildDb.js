@@ -30,7 +30,7 @@ try {
     try {
         mkdirSync(_guildDbDir);
     } catch (e) {
-        console.error("[ERROR] Can't create guild database folder, module might won't work properly.");
+        console.error("[ERROR] Nem lehet létrehozni a szerber adatbázis mappáját, a modul nem fog megfelelően működni.");
     }
 }
 
@@ -49,11 +49,11 @@ const _getOrCreateGuildDb = (guild_id) => {
     try {
         d = get(dbName);
     } catch (e) {
-        if (e.message.startsWith("No database with name ")) {
+        if (e.message.startsWith("Nincsen ilyen adatbázis ezzel a névvel ")) {
             create(dbName,_getGuildDbPath(guild_id));
             d = {};
         } else {
-            console.error("[ERROR] Unexpected error:");
+            console.error("[ERROR] Váratlan hiba:");
             console.error(e);
         }
     }

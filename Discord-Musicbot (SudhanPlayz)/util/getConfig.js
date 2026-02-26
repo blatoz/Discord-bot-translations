@@ -10,7 +10,7 @@ module.exports = () => {
 				const config = require("../config");
 				res(config);
 			} catch {
-				rej("No config file found.");
+				rej("Nincsen konfig fájl.");
 			}
 		}
 	});

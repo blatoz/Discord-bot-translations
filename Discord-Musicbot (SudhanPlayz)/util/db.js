@@ -25,7 +25,7 @@ try {
     _hasGlobalDb = l.includes(_dbName);
     _hasDbList = l.includes(_dbListName);
 } catch (e) {
-    console.warn("[DB] No global database exist");
+    console.warn("[DB] Nincsen globális adatbázis");
 }
 
 /**
@@ -65,7 +65,7 @@ for (const v of _dbList) {
             data: require(v.path) || {}
         });
     } catch (e) {
-        console.error("[DB] Can't load database '" + v.name + "' in '" + v.path + "'");
+        console.error("[DB] Nem lehet betölteni az adatbázist '" + v.name + "' itt: '" + v.path + "'");
     }
 }
 
@@ -93,7 +93,7 @@ const _write = (path, data) => {
         writeFileSync(path, JSON.stringify(data));
         return true;
     } catch (e) {
-        console.error("[DB] Can't write to '" + path + "', data is lost");
+        console.error("[DB] Nem lehet írni az adatbázisban '" + path + "', az adatok elvesztek");
         return false;
     }
 };
@@ -109,7 +109,7 @@ const _delete = (path) => {
         unlinkSync(path);
         return true;
     } catch (e) {
-        console.error("[DB] Can't delete '" + path + "'");
+        console.error("[DB] Nem lehet törölni '" + path + "'");
         return false;
     }
 }
@@ -174,7 +174,7 @@ const _removeDbList = (name) => {
 const get = (name) => {
     if (!name?.length) throw new TypeError("name undefined");
     const d = _dbs.get(name);
-    if (!d) throw new RangeError("No database with name " + name);
+    if (!d) throw new RangeError("Nincsen ilyen nevezetű adatbázis " + name);
     return d.data;
 }
 
@@ -193,9 +193,9 @@ const create = (name, path, initialData = {}) => {
     
     for (const [n,d] of _dbs) {
         if (n === name)
-            throw new Error("Database '" + name + "' already exist");
+            throw new Error("Adatbázis '" + name + "' már létezik");
         if (d.path === path) {
-            throw new Error("Database in path '" + path + "' already exist with name '" + n + "'");
+            throw new Error("Adatbázis az elérhető útvonalon '" + path + "' már létezik ezzel a névvel '" + n + "'");
         }
     }
 
@@ -222,7 +222,7 @@ const set = (name, data) => {
     if (typeof data !== "object") throw new TypeError("data is not object");
 
     const d = _dbs.get(name);
-    if (!d) throw new RangeError("No database with name " + name);
+    if (!d) throw new RangeError("Nincsen ilyen adatbázis ezzel a nével " + name);
     d.data = data;
 
     _wQueue.push(d);
@@ -238,7 +238,7 @@ const remove = (name) => {
     if (!name?.length) throw new TypeError("name undefined");
 
     const d = _dbs.get(name);
-    if (!d) throw new RangeError("No database with name " + name);
+    if (!d) throw new RangeError("Nincsen ilyen adatbázis ezzel a nével " + name);
 
     _dQueue.push(d.path);
     _removeDbList(name);

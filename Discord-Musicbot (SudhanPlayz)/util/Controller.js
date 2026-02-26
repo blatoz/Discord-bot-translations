@@ -109,7 +109,7 @@ module.exports = async (client, interaction) => {
 			} else {
 				player.pause(true);
 			}
-			client.warn(`Player: ${ player.options.guild } | Successfully ${ player.paused? "paused" : "resumed" } the player`);
+			client.warn(`Lejátszó: ${ player.options.guild } | Sikeresen ${ player.paused? "megállítva" : "elindítva" } a lejátszót.`);
 
 			return interaction.update({
 				components: [client.createController(player.options.guild, player)],
@@ -141,7 +141,7 @@ module.exports = async (client, interaction) => {
 		} else {
 			player.setTrackRepeat(true);
 		}
-		client.warn(`Player: ${player.options.guild} | Successfully toggled loop ${player.trackRepeat ? "on" : player.queueRepeat ? "queue on" : "off"} the player`);
+		client.warn(`Player: ${player.options.guild} | Successfully toggled loop ${player.trackRepeat ? "be" : player.queueRepeat ? "várólista be" : "ki"} the player`);
 
 		interaction.update({
 			components: [client.createController(player.options.guild, player)],
@@ -151,6 +151,6 @@ module.exports = async (client, interaction) => {
 
 	return interaction.reply({
 		ephemeral: true,
-		content: "❌ | **Unknown controller option**",
+		content: "❌ | **Ismeretlen kontroller opció**",
 	});
 };
