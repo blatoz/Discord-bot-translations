@@ -8,8 +8,8 @@ export default function Logout(_props: any) {
 
     return <>
         <Head>
-            <title>Logging Out | Discord Music Bot</title>
+            <title>Kijelentkezés | Discord Music Bot</title>
         </Head>
-        <p>Redirecting you to logout...</p>
+        <p>Átirányítás a kijelentkezéshez…</p>
     </>
 }
