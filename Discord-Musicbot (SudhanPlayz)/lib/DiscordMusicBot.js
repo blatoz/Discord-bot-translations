@@ -93,11 +93,11 @@ class DiscordMusicBot extends Client {
    * Build em
    */
   build() {
-    this.warn("Started the bot...");
+    this.warn("Bot elindítva...");
     this.login(this.config.token);
     this.server = this.config.website?.length ? new Server(this) : null; // constructing also starts it; Do not start server when no website configured
     if (this.config.debug === true) {
-      this.warn("Debug mode is enabled!");
+      this.warn("Debug mode engedélyezve van!");
       this.warn("Only enable this if you know what you are doing!");
       process.on("unhandledRejection", (error) => console.log(error));
       process.on("uncaughtException", (error) => console.log(error));
