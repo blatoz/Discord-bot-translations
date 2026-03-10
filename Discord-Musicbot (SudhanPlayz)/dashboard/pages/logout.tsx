@@ -8,7 +8,7 @@ export default function Logout(_props: any) {
 
     return <>
         <Head>
-            <title>Kijelentkezés | Discord Music Bot</title>
+            <title>Kijelentkezés | Discord Zene Bot</title>
         </Head>
         <p>Átirányítás a kijelentkezéshez…</p>
     </>
