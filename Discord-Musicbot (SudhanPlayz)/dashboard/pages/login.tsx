@@ -8,9 +8,9 @@ const Login = (_props: any) => {
 
     return <>
         <Head>
-            <title>Logging In | Discord Music Bot</title>
+            <title>Bejelentkezés | Discord Zene Bot</title>
         </Head>
-        <p>Redirecting you to login...</p>
+        <p>Átírányítás a bejelentkezés...</p>
     </>
 }
 
