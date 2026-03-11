@@ -62,7 +62,7 @@ async def upload_file_to_r2(
         key = "{}/{}.{}".format(guild_id, file_key, ext)
         await client.put_object(Bucket=constants.CF_R2_BUCKET, Key=key, Body=file_data)
         logger.debug(
-            "User %s in guild %s uploaded an image",
+            "Felhasználó %s szerveren: %s feltöltt egy képet",
             user_id,
             guild_id,
             extra={
