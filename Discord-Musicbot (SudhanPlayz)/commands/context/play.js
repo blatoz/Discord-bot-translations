@@ -3,7 +3,7 @@ const { MessageEmbed } = require("discord.js");
 const escapeMarkdown = require("discord.js").Util.escapeMarkdown;
 
 module.exports = {
-  command: new ContextMenuCommandBuilder().setName("Play Song").setType(3),
+  command: new ContextMenuCommandBuilder().setName("Zene Lejátszása").setType(3),
 
   /**
    * This function will handle context menu interaction
@@ -19,7 +19,7 @@ module.exports = {
     let node = await client.getLavalink(client);
     if (!node) {
       return interaction.reply({
-        embeds: [client.ErrorEmbed("Lavalink node is not connected")],
+        embeds: [client.ErrorEmbed("Lavalink csomópont nincsen csatlakoztatva")],
       });
     }
 
@@ -45,7 +45,7 @@ module.exports = {
       embeds: [
         new MessageEmbed()
           .setColor(client.config.embedColor)
-          .setDescription(":mag_right: **Searching...**"),
+          .setDescription(":mag_right: **Keresés...**"),
       ],
       fetchReply: true,
     });
@@ -69,7 +69,7 @@ module.exports = {
           embeds: [
             new MessageEmbed()
               .setColor("RED")
-              .setDescription("There was an error while searching"),
+              .setDescription("Van egy hiba a keresés közben"),
           ],
         })
         .catch(this.warn);
@@ -84,7 +84,7 @@ module.exports = {
           embeds: [
             new MessageEmbed()
               .setColor("RED")
-              .setDescription("No results were found"),
+              .setDescription("Nincsen található eredmény"),
           ],
         })
         .catch(this.warn);
@@ -101,19 +101,19 @@ module.exports = {
       var title = title.replace(/\[/g, "");
       let addQueueEmbed = new MessageEmbed()
         .setColor(client.config.embedColor)
-        .setAuthor({ name: "Added to queue", iconURL: client.config.iconURL })
-        .setDescription(`[${title}](${res.tracks[0].uri})` || "No Title")
+        .setAuthor({ name: "Hozzáadva a Várólistához", iconURL: client.config.iconURL })
+        .setDescription(`[${title}](${res.tracks[0].uri})` || "Nincs Cím")
         .setURL(res.tracks[0].uri)
         .addFields(
           {
-            name: "Added by",
+            name: "Hozzáadta",
             value: `<@${interaction.user.id}>`,
             inline: true,
           },
           {
-            name: "Duration",
+            name: "Időtartam",
             value: res.tracks[0].isStream
-              ? `\`LIVE 🔴 \``
+              ? `\`ÉLŐ 🔴 \``
               : `\`${client.ms(res.tracks[0].duration, {
                   colonNotation: true,
                   secondsDecimalDigits: 0,
@@ -132,7 +132,7 @@ module.exports = {
 
       if (player.queue.totalSize > 1) {
         addQueueEmbed.addFields({
-          name: "Position in queue",
+          name: "A Pozíciója a Várólistán",
           value: `${player.queue.size}`,
           inline: true,
         });
@@ -157,19 +157,19 @@ module.exports = {
       let playlistEmbed = new MessageEmbed()
         .setColor(client.config.embedColor)
         .setAuthor({
-          name: "Playlist added to queue",
+          name: "Lejátszási Lista Hozzáadva a Várólistához",
           iconURL: client.config.iconURL,
         })
         .setThumbnail(res.tracks[0].thumbnail)
         .setDescription(`[${res.playlist.name}](${query})`)
         .addFields(
           {
-            name: "Enqueued",
-            value: `\`${res.tracks.length}\` songs`,
+            name: "Sorban",
+            value: `\`${res.tracks.length}\` Zene`,
             inline: true,
           },
           {
-            name: "Playlist duration",
+            name: "Lejátszási Lista Időtartam",
             value: `\`${client.ms(res.playlist.duration, {
               colonNotation: true,
               secondsDecimalDigits: 0,
