@@ -87,17 +87,17 @@ Boot({ configJS, configJSON, auth }, scope).then(() => {
 			}
 
 			if (configJS.shardTotal === "auto") {
-				logger.info(`Getting the recommended shards from Discord...`);
+				logger.info(`Az ajánlott shardok beszerzése a Discordból...`);
 				const result = await require("discord.js").Util.fetchRecommendedShards(auth.discord.clientToken);
-				logger.info(`GAwesomeBot will spawn ${result} shard(s) as recommended by Discord.`, { shards: result });
+				logger.info(`A GAwesomeBot a Discord ajánlása szerint ${result} shardot hoz létre.`, { shards: result });
 				configJS.shardTotal = result;
 			}
 		}
 
-		logger.silly("Creating sharder instance.");
+		logger.silly("Sharder példány létrehozása.");
 		const sharder = await new Sharder(auth.discord.clientToken, configJS.shardTotal, logger);
 		sharder.cluster.on("online", worker => {
-			logger.info(`Worker ${worker.id} launched.`, { worker: worker.id });
+			logger.info(`Worker ${worker.id} elindítva.`, { worker: worker.id });
 		});
 
 		if (!scope.safeMode) {
