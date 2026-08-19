@@ -49,7 +49,7 @@ module.exports = async (client, interaction) => {
 		const msg = await interaction.channel.send({
 			embeds: [
 				client.Embed(
-					"⏹️ | **Sikeresen megállítva a lejátszót**",
+					"⏹️ | **Sikeresen megállítva.**",
 				),
 			],
 		});
@@ -71,7 +71,7 @@ module.exports = async (client, interaction) => {
         if (!player.queue.previous ||
             player.queue.previous === player.queue.current ||
             player.queue.previous === player.queue[0]) {
-            
+
            return interaction.reply({
                         ephemeral: true,
 			embeds: [
@@ -95,7 +95,7 @@ module.exports = async (client, interaction) => {
 				embeds: [
 					new MessageEmbed()
 						.setColor("RED")
-						.setDescription("There is no song playing right now."),
+						.setDescription("Nincsen zene játszva jelenleg."),
 				],
 			});
 			setTimeout(() => {
