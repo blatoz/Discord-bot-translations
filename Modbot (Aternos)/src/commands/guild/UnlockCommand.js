@@ -37,7 +37,7 @@ export default class UnlockCommand extends BaseLockCommand {
 
     getChannelMessageEmbed(message) {
         return new EmbedBuilder()
-            .setTitle('This channel has been unlocked')
+            .setTitle('Ez a Csatorna Fel Lett Oldva')
             .setColor(colors.GREEN)
             .setDescription(message);
     }
