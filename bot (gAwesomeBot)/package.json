@@ -18,9 +18,9 @@
   },
   "dependencies": {
     "@sentry/node": "^5.5.0",
-    "adm-zip": "^0.4.13",
+    "adm-zip": "^0.6.0",
     "async-dl-github-repo": "^2.0.0",
-    "body-parser": "^1.18.3",
+    "body-parser": "^1.20.6",
     "canvas-constructor": "github:kyranet/canvasConstructor",
     "canvas-prebuilt": "^2.0.0-alpha.14",
     "chainfetch": "^1.2.0",
@@ -34,7 +34,7 @@
     "discord.js": "github:discordjs/discord.js",
     "ejs": "^2.6.1",
     "erlpack": "github:discordapp/erlpack",
-    "express": "^4.16.4",
+    "express": "^4.22.2",
     "express-rate-limit": "^5.0.0",
     "express-session": "^1.15.6",
     "fast-levenshtein": "^2.0.6",
@@ -60,7 +60,7 @@
     "require-reload": "^0.2.2",
     "rimraf": "^3.0.0",
     "rss-parser": "^3.6.0",
-    "showdown": "^1.9.0",
+    "showdown": "^2.1.0",
     "showdown-xss-filter": "^0.2.0",
     "snekfetch": "^4.0.4",
     "socket.io": "^2.2.0",
@@ -81,7 +81,7 @@
   "devDependencies": {
     "active-handles": "^1.1.0",
     "clean-css-cli": "^4.2.1",
-    "eslint": "^6.2.1",
+    "eslint": "^10.8.1",
     "eslint-plugin-node": "^8.0.0",
     "eslint-plugin-promise": "^4.2.1",
     "uglify-es": "^3.3.9"
